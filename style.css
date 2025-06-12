@@ -29,6 +29,43 @@
   --font-family-mono: monaco, 'Consolas', 'Lucida Console', monospace;
 }
 
+/* Dark theme */
+:root {
+  /* Background colors - using warm dark grays instead of pure black */
+  --bg-color: #1a1a1a; /* Main background - warm dark gray */
+  --section-bg-color: #222222; /* Section background - slightly lighter */
+  --item-bg-color: #2a2a2a; /* Item background - elevated surface */
+
+  /* Border color - subtle but visible in dark mode */
+  --border-color: #404040; /* Medium gray for gentle separation */
+
+  /* Title colors - high contrast but not harsh white */
+  --title-color: #f5f5f5; /* Main titles - off-white for comfort */
+  --section-title-color: #e8e8e8; /* Section titles - slightly dimmer */
+  --item-title-color: #f0f0f0; /* Item titles - balanced brightness */
+
+  /* Text colors - carefully balanced for readability without strain */
+  --text-color: #b8b8b8; /* Body text - medium gray for easy reading */
+  --key-text-color: #d0d0d0; /* Key text - brighter for emphasis */
+  --value-text-color: #a0a0a0; /* Value text - softer for secondary info */
+
+  /* Skill indicator colors - maintaining contrast while being gentle */
+  --skilldor-empty-color: #404040; /* Empty state - subtle dark gray */
+  --skilldor-filled-color: #e0e0e0; /* Filled state - bright but not harsh */
+
+  /* Error colors - maintaining urgency while reducing strain */
+  --error-color: #ff6b6b; /* Error text - softer red, less aggressive */
+  --error-bg-color: #2d1b1b; /* Error background - dark red tint */
+  --error-border-color: #4a2c2c; /* Error border - muted red border */
+
+  --highlight-color: #ffeb3b; /* Highlight color - bright yellow for emphasis */
+
+  --font-family-sans: -apple-system, 'BlinkMacSystemFont', 'Avenir',
+    'Avenir Next', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family-mono: monaco, 'Consolas', 'Lucida Console', monospace;
+}
+
 /* Reset and Base Styles */
 * {
   margin: 0;
