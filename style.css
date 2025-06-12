@@ -17,6 +17,8 @@
   --skilldor-empty-color: #ddd;
   --skilldor-filled-color: #000;
 
+  --highlight-color: #3b48ff;
+
   --error-color: #d32f2f;
   --error-bg-color: #ffebee;
   --error-border-color: #ffcdd2;
@@ -47,6 +49,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+a {
+  color: var(--highlight-color);
 }
 
 /* Typography */
