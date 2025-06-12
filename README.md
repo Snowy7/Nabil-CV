@@ -1,0 +1,1 @@
+Icons from [Iconify](https://icon-sets.iconify.design/)

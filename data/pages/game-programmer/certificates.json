@@ -1,0 +1,57 @@
+[
+  {
+    "name": "JavaScript Algorithms and Data Structures",
+    "id": "",
+    "image": "/assets/cert/javascript-algorithms-and-data-structures.png",
+    "link": "https://freecodecamp.org/certification/Assayyaad/javascript-algorithms-and-data-structures",
+    "provider": {
+      "name": "FreeCodeCamp",
+      "link": "https://freecodecamp.org",
+      "icon": "simple-icons:freecodecamp"
+    }
+  },
+  {
+    "name": "Introduction to C#",
+    "id": "CC-KQMDTAMA",
+    "image": "/assets/cert/introduction-to-csharp.png",
+    "link": "https://www.sololearn.com/en/certificates/CC-KQMDTAMA",
+    "provider": {
+      "name": "Sololearn",
+      "link": "https://sololearn.com",
+      "icon": "simple-icons:sololearn"
+    }
+  },
+  {
+    "name": "Introduction to JavaScript",
+    "id": "CC-7A1QGUWT",
+    "image": "/assets/cert/introduction-to-javascript.png",
+    "link": "https://www.sololearn.com/en/certificates/CC-7A1QGUWT",
+    "provider": {
+      "name": "Sololearn",
+      "link": "https://sololearn.com",
+      "icon": "simple-icons:sololearn"
+    }
+  },
+  {
+    "name": "C++",
+    "id": "CT-DKF29HTQ",
+    "image": "/assets/cert/cplusplus.png",
+    "link": "https://www.sololearn.com/en/certificates/CT-DKF29HTQ",
+    "provider": {
+      "name": "Sololearn",
+      "link": "https://sololearn.com",
+      "icon": "simple-icons:sololearn"
+    }
+  },
+  {
+    "name": "Tech for Everyone",
+    "id": "CC-49YAACNH",
+    "image": "/assets/cert/tech-for-everyone.png",
+    "link": "https://api2.sololearn.com/v2/certificates/CC-49YAACNH/image/png",
+    "provider": {
+      "name": "Sololearn",
+      "link": "https://sololearn.com",
+      "icon": "simple-icons:sololearn"
+    }
+  }
+]

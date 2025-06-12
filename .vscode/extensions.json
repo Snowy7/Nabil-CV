@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "usernamehw.errorlens",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "yoavbls.pretty-ts-errors"
+  ]
+}

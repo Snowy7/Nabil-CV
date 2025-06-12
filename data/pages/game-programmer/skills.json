@@ -1,0 +1,7 @@
+[
+  { "name": "C#", "efficiency": 10 },
+  { "name": "C++", "efficiency": 3 },
+  { "name": "JavaScript", "efficiency": 10 },
+  { "name": "GDScript", "efficiency": 2 },
+  { "name": "Git", "efficiency": 9 }
+]

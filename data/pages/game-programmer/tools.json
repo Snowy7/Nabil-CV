@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Claude",
+    "icon": "simple-icons:claude",
+    "link": "https://claude.ai",
+    "yearsOfExperience": 1
+  },
+  {
+    "name": "Unity",
+    "icon": "bi:unity",
+    "link": "https://unity.com",
+    "yearsOfExperience": 8
+  },
+  {
+    "name": "Godot",
+    "icon": "devicon-plain:godot",
+    "link": "https://godotengine.org",
+    "yearsOfExperience": 1
+  },
+  {
+    "name": "Visual Studio",
+    "icon": "uil:visual-studio",
+    "link": "https://visualstudio.com",
+    "yearsOfExperience": 8
+  },
+  {
+    "name": "Visual Studio Code",
+    "icon": "cib:visual-studio-code",
+    "link": "https://code.visualstudio.com",
+    "yearsOfExperience": 5
+  },
+  {
+    "name": "Notepad++",
+    "icon": "simple-icons:notepadplusplus",
+    "link": "https://notepad-plus-plus.org",
+    "yearsOfExperience": 2
+  },
+  {
+    "name": "GitHub",
+    "icon": "mdi:github",
+    "link": "https://github.com",
+    "yearsOfExperience": 5
+  },
+  {
+    "name": "GitLab",
+    "icon": "ri:gitlab-fill",
+    "link": "https://gitlab.com",
+    "yearsOfExperience": 0
+  },
+  {
+    "name": "GitKraken",
+    "icon": "simple-icons:gitkraken",
+    "link": "https://www.gitkraken.com",
+    "yearsOfExperience": 3
+  }
+]
