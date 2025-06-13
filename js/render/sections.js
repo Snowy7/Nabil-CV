@@ -10,9 +10,8 @@ import render from './items.js'
 export function renderHeader({ title, tagline }) {
   let html = ''
 
-  if (title) html += render.title(title)
-
-  if (tagline) html += render.tagline(tagline)
+  html += render.title(title)
+  html += render.tagline(tagline)
 
   return html.trim()
 }
@@ -25,11 +24,9 @@ export function renderHeader({ title, tagline }) {
 export function renderPersonalInfo({ name, age, sex }) {
   let html = ''
 
-  if (name) html += render.keyValue('Name', name)
-
-  if (age) html += render.keyValue('Age', age.toString())
-
-  if (sex) html += render.keyValue('Gender', sex)
+  html += render.keyValue('Name', name)
+  html += render.keyValue('Age', age.toString())
+  html += render.keyValue('Gender', sex)
 
   return html.trim()
 }
@@ -42,9 +39,8 @@ export function renderPersonalInfo({ name, age, sex }) {
 export function renderContact({ email, phone }) {
   let html = ''
 
-  if (email) html += render.email(email)
-
-  if (phone) html += render.phone(phone)
+  html += render.email(email)
+  html += render.phone(phone)
 
   return html.trim()
 }
@@ -62,9 +58,8 @@ export function renderAccounts(data) {
 
     html += `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`
 
-    if (icon) html += render.icon(icon)
-
-    if (name) html += name
+    html += render.icon(icon)
+    html += name
 
     html += '</a>'
 
@@ -89,13 +84,11 @@ export function renderProjects(data) {
       html += '<div class="project-header">'
 
       html += render.maskedTitle(url, name, 'project')
-
-      if (date) html += render.date(date, 'project')
+      html += render.date(date, 'project')
 
       html += '</div>'
     }
-
-    if (description) html += render.description(description, 'project')
+    html += render.description(description, 'project')
 
     html += '</article>'
 
@@ -116,15 +109,10 @@ export function renderCertificates(data) {
 
     html += '<div class="certificate">'
 
-    if (image)
-      html += render.maskedImage(image, link, name, 'certificate', 'provider')
-
-    if (name) html += `<h3 class="certificate-name">${name}</h3>`
-
-    if (id) html += render.text(id, 'certificate-id')
-
-    if (provider)
-      html += render.maskedText(provider.link, provider.name, 'provider')
+    html += render.maskedImage(image, link, name, 'certificate', 'provider')
+    html += `<h3 class="certificate-name">${name}</h3>`
+    html += render.text(id, 'certificate-id')
+    html += render.maskedText(provider.link, provider.name, 'provider')
 
     html += '</div>'
 
@@ -148,8 +136,7 @@ export function renderSkills(data) {
 
     html += '<div class="skill">'
 
-    if (name) html += render.name(name, 'skill')
-
+    html += render.name(name, 'skill')
     html += render.dotsContainer(efficiency)
 
     html += '</div>'
@@ -179,16 +166,14 @@ export function renderTools(data) {
     if (name) {
       html += `<a href="${link}" target="_blank" rel="noopener noreferrer">`
 
-      if (icon) html += render.icon(icon)
-
+      html += render.icon(icon)
       html += name
 
       html += '</a>'
     }
 
     html += '</div>'
-
-    if (yearsOfExperience) html += render.experience(yearsOfExperience, 'tool')
+    html += render.experience(yearsOfExperience, 'tool')
 
     html += '</div>'
 
@@ -209,8 +194,7 @@ export function renderInterests(data) {
 
     html += '<span class="interest">'
 
-    if (icon) html += `${icon} ${name}`
-    else html += name
+    html += `${icon} ${name}`
 
     html += '</span>'
 
@@ -231,9 +215,8 @@ export function renderLanguages(data) {
 
     html += '<div class="language">'
 
-    if (name) html += render.name(name, 'language')
-
-    if (efficiency) html += render.name(efficiency, 'language')
+    html += render.name(name, 'language')
+    html += render.name(efficiency, 'language')
 
     html += '</div>'
 

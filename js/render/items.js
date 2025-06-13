@@ -3,6 +3,8 @@
  * @returns {string} HTML string
  */
 export function renderTitle(str) {
+  if (!str) str = '...'
+
   return `<h1>${str}</h1>`
 }
 
@@ -11,6 +13,8 @@ export function renderTitle(str) {
  * @returns {string} HTML string
  */
 export function renderTagline(str) {
+  if (!str) return ''
+
   return renderText(str, 'tagline')
 }
 
@@ -20,6 +24,8 @@ export function renderTagline(str) {
  * @returns {string} HTML string
  */
 export function renderDescription(str, type) {
+  if (!str) return ''
+
   return renderText(str, `${type}-description`)
 }
 
@@ -29,6 +35,8 @@ export function renderDescription(str, type) {
  * @returns {string} HTML string
  */
 export function renderText(str, className) {
+  if (!str) return ''
+
   return `<p class="${className}">${str}</p>`
 }
 
@@ -38,6 +46,11 @@ export function renderText(str, className) {
  * @returns {string} HTML string
  */
 export function renderKeyValue(key, value) {
+  if (!key && !value) return ''
+
+  if (!key) key = '...'
+  if (!value) value = '?'
+
   return `<dt>${key}</dt><dd>${value}</dd>`
 }
 
@@ -46,6 +59,8 @@ export function renderKeyValue(key, value) {
  * @returns {string} HTML string
  */
 export function renderEmail(str) {
+  if (!str) str = 'e@ma.il'
+
   return `
 <a href="mailto:${str}" aria-label="Send email">
   ${renderIcon('ic:round-email')}
@@ -59,6 +74,8 @@ export function renderEmail(str) {
  * @returns {string} HTML string
  */
 export function renderPhone(str) {
+  if (!str) str = '+0-000-000-0000'
+
   const cleanedPhone = str.replace(/[^+\d]/g, '')
 
   return `
@@ -74,6 +91,8 @@ export function renderPhone(str) {
  * @returns {string} HTML string
  */
 export function renderIcon(str) {
+  if (!str) str = 'icon-park-outline:error-picture'
+
   return `<span class="iconify-inline" data-icon="${str}"></span>`
 }
 
@@ -83,7 +102,10 @@ export function renderIcon(str) {
  * @returns {string} HTML string
  */
 export function renderDate(str, type) {
-  const formattedDate = formatDate(str)
+  let formattedDate = formatDate(str)
+
+  if (!str) formattedDate = 'Month 0000'
+
   return `<time class="${type}-date" datetime="${str}">${formattedDate}</time>`
 
   /**
@@ -113,12 +135,14 @@ export function renderDate(str, type) {
 }
 
 /**
- * @param {string} text
+ * @param {string} str
  * @param {string} type
  * @returns {string} HTML string
  */
-export function renderName(text, type) {
-  return `<span class="${type}-name">${text}</span>`
+export function renderName(str, type) {
+  if (!str) str = '...'
+
+  return `<span class="${type}-name">${str}</span>`
 }
 
 /**
@@ -127,6 +151,8 @@ export function renderName(text, type) {
  * @returns {string} HTML string
  */
 export function renderExperience(num, type) {
+  if (!num) num = 0
+
   const text = num === 1 ? '1 year' : `${num} years`
   return `<span class="${type}-experience">${text}</span>`
 }
@@ -140,7 +166,19 @@ export function renderExperience(num, type) {
  * @returns {string} HTML string
  */
 export function renderMaskedImage(image, url, alt, imageType, urlType) {
+  if (!image) {
+    if (!url) {
+      if (!alt) return ''
+
+      return alt
+    }
+
+    return renderMaskedText(url, alt, urlType)
+  }
+
   const renderedImage = `<img src="${image}" alt="${alt} ${imageType}" class="${imageType}-image" onerror="this.style.display='none'">`
+  if (!url) return renderedImage
+
   return renderMaskedText(url, renderedImage, urlType)
 }
 
@@ -151,7 +189,15 @@ export function renderMaskedImage(image, url, alt, imageType, urlType) {
  * @returns {string} HTML string
  */
 export function renderMaskedTitle(url, text, type) {
+  if (!text) {
+    if (!url) return ''
+
+    return renderMaskedText(url, url, type)
+  }
+
   const renderedTitle = `<h3 class="${type}-name">${text}</h3>`
+  if (!url) return renderedTitle
+
   return renderMaskedText(url, renderedTitle, type)
 }
 
@@ -162,6 +208,14 @@ export function renderMaskedTitle(url, text, type) {
  * @returns {string} HTML string
  */
 export function renderMaskedText(url, text, type) {
+  if (!text) {
+    if (!url) return ''
+
+    return renderMaskedText(url, url, type)
+  }
+
+  if (!url) return text
+
   return `
 <a href="${url}" target="_blank" rel="noopener noreferrer" class="${type}-link">
   ${text}
@@ -174,6 +228,8 @@ export function renderMaskedText(url, text, type) {
  * @returns {string} HTML string
  */
 export function renderDotsContainer(efficiency) {
+  if (!efficiency) efficiency = 0
+
   return `
 <div class="skill-level" aria-label="Skill level ${efficiency} out of 10">
     ${renderDots(efficiency)}
@@ -186,6 +242,8 @@ export function renderDotsContainer(efficiency) {
  * @returns {string} HTML string
  */
 export function renderDots(efficiency) {
+  if (!efficiency) efficiency = 0
+
   return Array.from({ length: 10 }, (_, i) => renderDot(efficiency, i)).join('')
 
   /**
