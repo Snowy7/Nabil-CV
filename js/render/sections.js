@@ -75,6 +75,8 @@ export function renderAccounts(data) {
  * @returns {string} HTML string for project
  */
 export function renderProjects(data) {
+  const type = 'project'
+
   return data.map(renderProject).join('')
 
   function renderProject({ name, description, url, date }) {
@@ -82,19 +84,19 @@ export function renderProjects(data) {
     const renderedName = render.item.sectionTitle(name, type)
 
     const nameContainer = render.container.empty(
-      '<div class="project-header">',
+      `<div class="${type}-header">`,
 
       render.item.url(url, renderedName, type),
-      render.item.date(date, 'project'),
+      render.item.date(date, type),
 
       '</div>'
     )
 
     return render.container.empty(
-      '<article class="project">',
+      `<article class="${type}">`,
 
       nameContainer,
-      render.item.description(description, 'project'),
+      render.item.description(description, type),
 
       '</article>'
     )
@@ -107,18 +109,21 @@ export function renderProjects(data) {
  * @returns {string} HTML string for certificate
  */
 export function renderCertificates(data) {
+  const type = 'certificate'
+  const type2 = 'provider'
+
   return data.map(renderCertificate).join('')
 
   function renderCertificate({ name, id, image, link, provider }) {
-    const renderedImage = render.item.image(image, name, 'certificate')
+    const renderedImage = render.item.image(image, name, type)
 
     return render.container.empty(
       '<div class="certificate">',
 
-      render.item.url(link, renderedImage, 'provider'),
-      render.item.sectionTitle(name, 'certificate'),
-      render.item.text(id, 'certificate-id'),
-      render.item.url(provider.link, provider.name, 'provider'),
+      render.item.url(link, renderedImage, type2),
+      render.item.sectionTitle(name, type),
+      render.item.text(id, `${type}-id`),
+      render.item.url(provider.link, provider.name, type2),
 
       '</div>'
     )
@@ -131,6 +136,8 @@ export function renderCertificates(data) {
  * @returns {string} HTML string for skill
  */
 export function renderSkills(data) {
+  const type = 'skill'
+
   return data
     .sort((a, b) => b.efficiency - a.efficiency)
     .map(renderSkill)
@@ -138,9 +145,9 @@ export function renderSkills(data) {
 
   function renderSkill({ name, efficiency }) {
     return render.container.empty(
-      '<div class="skill">',
+      `<div class="${type}">`,
 
-      render.item.name(name, 'skill'),
+      render.item.name(name, type),
       render.container.dots(efficiency),
 
       '</div>'
@@ -154,6 +161,8 @@ export function renderSkills(data) {
  * @returns {string} HTML string for tool
  */
 export function renderTools(data) {
+  const type = 'tool'
+
   return data
     .sort((a, b) => b.yearsOfExperience - a.yearsOfExperience)
     .map(renderTool)
@@ -170,7 +179,7 @@ export function renderTools(data) {
     )
 
     const toolNameContainer = render.container.empty(
-      '<div class="tool-name">',
+      `<div class="${type}-name">`,
 
       nameContainer,
 
@@ -178,10 +187,10 @@ export function renderTools(data) {
     )
 
     return render.container.empty(
-      '<div class="tool">',
+      `<div class="${type}">`,
 
       toolNameContainer,
-      render.item.experience(yearsOfExperience, 'tool'),
+      render.item.experience(yearsOfExperience, type),
 
       '</div>'
     )
@@ -194,11 +203,13 @@ export function renderTools(data) {
  * @returns {string} HTML string for interest
  */
 export function renderInterests(data) {
+  const type = 'interest'
+
   return data.map(renderInterest).join('')
 
   function renderInterest({ name, icon }) {
     return render.container.empty(
-      '<span class="interest">',
+      `<span class="${type}">`,
 
       `${icon} ${name}`,
 
@@ -213,14 +224,16 @@ export function renderInterests(data) {
  * @returns {string} HTML string for language
  */
 export function renderLanguages(data) {
+  const type = 'language'
+
   return data.map(renderLanguage).join('')
 
   function renderLanguage({ name, efficiency }) {
     return render.container.empty(
-      '<div class="language">',
+      `<div class="${type}">`,
 
-      render.item.name(name, 'language'),
-      render.item.name(efficiency, 'language'),
+      render.item.name(name, type),
+      render.item.name(efficiency, type),
 
       '</div>'
     )
