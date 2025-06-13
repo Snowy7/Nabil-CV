@@ -110,7 +110,7 @@ export function renderCertificates(data) {
     html += '<div class="certificate">'
 
     html += render.maskedImage(image, link, name, 'certificate', 'provider')
-    html += `<h3 class="certificate-name">${name}</h3>`
+    html += render.sectionTitle(name, 'certificate')
     html += render.text(id, 'certificate-id')
     html += render.maskedText(provider.link, provider.name, 'provider')
 

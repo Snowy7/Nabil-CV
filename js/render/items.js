@@ -10,6 +10,17 @@ export function renderTitle(str) {
 
 /**
  * @param {string} str
+ * @param {string} type
+ * @returns {string} HTML string
+ */
+export function renderSectionTitle(str, type) {
+  if (!str) str = '...'
+
+  return `<h3 class="${type}-name">${str}</h3>`
+}
+
+/**
+ * @param {string} str
  * @returns {string} HTML string
  */
 export function renderTagline(str) {
@@ -195,7 +206,7 @@ export function renderMaskedTitle(url, text, type) {
     return renderMaskedText(url, url, type)
   }
 
-  const renderedTitle = `<h3 class="${type}-name">${text}</h3>`
+  const renderedTitle = renderSectionTitle(text, type)
   if (!url) return renderedTitle
 
   return renderMaskedText(url, renderedTitle, type)
@@ -259,6 +270,7 @@ export function renderDots(efficiency) {
 
 export default {
   title: renderTitle,
+  sectionTitle: renderSectionTitle,
   tagline: renderTagline,
   description: renderDescription,
   text: renderText,
