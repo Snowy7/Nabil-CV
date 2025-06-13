@@ -55,21 +55,21 @@ export function renderContact({ email, phone }) {
  * @returns {string} HTML string for accounts
  */
 export function renderAccounts(data) {
-  return data
-    .map(({ name, url, icon }) => {
-      let html = ''
+  return data.map(renderAccount).join('')
 
-      html += `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`
+  function renderAccount({ name, url, icon }) {
+    let html = ''
 
-      if (icon) html += render.icon(icon)
+    html += `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`
 
-      if (name) html += name
+    if (icon) html += render.icon(icon)
 
-      html += '</a>'
+    if (name) html += name
 
-      return html.trim()
-    })
-    .join('')
+    html += '</a>'
+
+    return html.trim()
+  }
 }
 
 /**
@@ -78,29 +78,29 @@ export function renderAccounts(data) {
  * @returns {string} HTML string for project
  */
 export function renderProjects(data) {
-  return data
-    .map(({ name, description, url, date }) => {
-      let html = ''
+  return data.map(renderProject).join('')
 
-      html += '<article class="project">'
+  function renderProject({ name, description, url, date }) {
+    let html = ''
 
-      if (name) {
-        html += '<div class="project-header">'
+    html += '<article class="project">'
 
-        html += render.maskedTitle(url, name, 'project')
+    if (name) {
+      html += '<div class="project-header">'
 
-        if (date) html += render.date(date, 'project')
+      html += render.maskedTitle(url, name, 'project')
 
-        html += '</div>'
-      }
+      if (date) html += render.date(date, 'project')
 
-      if (description) html += render.description(description, 'project')
+      html += '</div>'
+    }
 
-      html += '</article>'
+    if (description) html += render.description(description, 'project')
 
-      return html.trim()
-    })
-    .join('')
+    html += '</article>'
+
+    return html.trim()
+  }
 }
 
 /**
@@ -109,27 +109,27 @@ export function renderProjects(data) {
  * @returns {string} HTML string for certificate
  */
 export function renderCertificates(data) {
-  return data
-    .map(({ name, id, image, link, provider }) => {
-      let html = ''
+  return data.map(renderCertificate).join('')
 
-      html += '<div class="certificate">'
+  function renderCertificate({ name, id, image, link, provider }) {
+    let html = ''
 
-      if (image)
-        html += render.maskedImage(image, link, name, 'certificate', 'provider')
+    html += '<div class="certificate">'
 
-      if (name) html += `<h3 class="certificate-name">${name}</h3>`
+    if (image)
+      html += render.maskedImage(image, link, name, 'certificate', 'provider')
 
-      if (id) html += render.text(id, 'certificate-id')
+    if (name) html += `<h3 class="certificate-name">${name}</h3>`
 
-      if (provider)
-        html += render.maskedText(provider.link, provider.name, 'provider')
+    if (id) html += render.text(id, 'certificate-id')
 
-      html += '</div>'
+    if (provider)
+      html += render.maskedText(provider.link, provider.name, 'provider')
 
-      return html.trim()
-    })
-    .join('')
+    html += '</div>'
+
+    return html.trim()
+  }
 }
 
 /**
@@ -140,20 +140,22 @@ export function renderCertificates(data) {
 export function renderSkills(data) {
   return data
     .sort((a, b) => b.efficiency - a.efficiency)
-    .map(({ name, efficiency }) => {
-      let html = ''
-
-      html += '<div class="skill">'
-
-      if (name) html += render.name(name, 'skill')
-
-      html += render.dotsContainer(efficiency)
-
-      html += '</div>'
-
-      return html.trim()
-    })
+    .map(renderSkill)
     .join('')
+
+  function renderSkill({ name, efficiency }) {
+    let html = ''
+
+    html += '<div class="skill">'
+
+    if (name) html += render.name(name, 'skill')
+
+    html += render.dotsContainer(efficiency)
+
+    html += '</div>'
+
+    return html.trim()
+  }
 }
 
 /**
@@ -164,33 +166,34 @@ export function renderSkills(data) {
 export function renderTools(data) {
   return data
     .sort((a, b) => b.yearsOfExperience - a.yearsOfExperience)
-    .map(({ name, icon, link, yearsOfExperience }) => {
-      let html = ''
-
-      html += '<div class="tool">'
-
-      html += '<div class="tool-name">'
-
-      if (name) {
-        html += `<a href="${link}" target="_blank" rel="noopener noreferrer">`
-
-        if (icon) html += render.icon(icon)
-
-        html += name
-
-        html += '</a>'
-      }
-
-      html += '</div>'
-
-      if (yearsOfExperience)
-        html += render.experience(yearsOfExperience, 'tool')
-
-      html += '</div>'
-
-      return html.trim()
-    })
+    .map(renderTool)
     .join('')
+
+  function renderTool({ name, icon, link, yearsOfExperience }) {
+    let html = ''
+
+    html += '<div class="tool">'
+
+    html += '<div class="tool-name">'
+
+    if (name) {
+      html += `<a href="${link}" target="_blank" rel="noopener noreferrer">`
+
+      if (icon) html += render.icon(icon)
+
+      html += name
+
+      html += '</a>'
+    }
+
+    html += '</div>'
+
+    if (yearsOfExperience) html += render.experience(yearsOfExperience, 'tool')
+
+    html += '</div>'
+
+    return html.trim()
+  }
 }
 
 /**
@@ -199,20 +202,20 @@ export function renderTools(data) {
  * @returns {string} HTML string for interest
  */
 export function renderInterests(data) {
-  return data
-    .map(({ name, icon }) => {
-      let html = ''
+  return data.map(renderInterest).join('')
 
-      html += '<span class="interest">'
+  function renderInterest({ name, icon }) {
+    let html = ''
 
-      if (icon) html += `${icon} ${name}`
-      else html += name
+    html += '<span class="interest">'
 
-      html += '</span>'
+    if (icon) html += `${icon} ${name}`
+    else html += name
 
-      return html.trim()
-    })
-    .join('')
+    html += '</span>'
+
+    return html.trim()
+  }
 }
 
 /**
@@ -221,21 +224,21 @@ export function renderInterests(data) {
  * @returns {string} HTML string for language
  */
 export function renderLanguages(data) {
-  return data
-    .map(({ name, efficiency }) => {
-      let html = ''
+  return data.map(renderLanguage).join('')
 
-      html += '<div class="language">'
+  function renderLanguage({ name, efficiency }) {
+    let html = ''
 
-      if (name) html += render.name(name, 'language')
+    html += '<div class="language">'
 
-      if (efficiency) html += render.name(efficiency, 'language')
+    if (name) html += render.name(name, 'language')
 
-      html += '</div>'
+    if (efficiency) html += render.name(efficiency, 'language')
 
-      return html.trim()
-    })
-    .join('')
+    html += '</div>'
+
+    return html.trim()
+  }
 }
 
 export default {
