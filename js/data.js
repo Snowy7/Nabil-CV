@@ -151,7 +151,7 @@ export function renderSkills(data) {
 
       html += '</div>'
 
-      return html
+      return html.trim()
     })
     .join('')
 }
@@ -187,6 +187,8 @@ export function renderTools(data) {
         html += render.experience(yearsOfExperience, 'tool')
 
       html += '</div>'
+
+      return html.trim()
     })
     .join('')
 }
