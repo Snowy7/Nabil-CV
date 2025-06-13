@@ -1,4 +1,4 @@
-import render from './data.js'
+import renderSection from './render/sections.js'
 
 /**
  * Populates a section with rendered data
@@ -44,7 +44,7 @@ function initializePage(data) {
       ['interests', 'interests'],
       ['languages', 'languages']
     ].forEach(([id, key]) => {
-      populateSection(`${id}-content`, data[key], render[key])
+      populateSection(`${id}-content`, data[key], renderSection[key])
     })
   } catch (error) {
     console.error('Error initializing page:', error)

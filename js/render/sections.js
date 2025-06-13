@@ -1,6 +1,6 @@
-/** @import { Account, Certificate, Contact, Header, Interest, Language, PersonalInfo, Project, Skill, Tool } from './types.js' */
+/** @import { Account, Certificate, Contact, Header, Interest, Language, PersonalInfo, Project, Skill, Tool } from '../types.js' */
 
-import render from './components.js'
+import render from './items.js'
 
 /**
  * Renders header content with job title and tagline
