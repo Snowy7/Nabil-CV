@@ -170,27 +170,18 @@ export function renderExperience(num, type) {
 
 /**
  * @param {string} image
- * @param {string} url
  * @param {string} alt
  * @param {string} imageType
- * @param {string} urlType
  * @returns {string} HTML string
  */
-export function renderMaskedImage(image, url, alt, imageType, urlType) {
+export function renderImage(image, alt, imageType) {
   if (!image) {
-    if (!url) {
-      if (!alt) return ''
+    if (!alt) return ''
 
-      return alt
-    }
-
-    return renderMaskedText(url, alt, urlType)
+    return alt
   }
 
-  const renderedImage = `<img src="${image}" alt="${alt} ${imageType}" class="${imageType}-image" onerror="this.style.display='none'">`
-  if (!url) return renderedImage
-
-  return renderMaskedText(url, renderedImage, urlType)
+  return `<img src="${image}" alt="${alt} ${imageType}" class="${imageType}-image" onerror="this.style.display='none'">`
 }
 
 /**
@@ -199,30 +190,11 @@ export function renderMaskedImage(image, url, alt, imageType, urlType) {
  * @param {string} type
  * @returns {string} HTML string
  */
-export function renderMaskedTitle(url, text, type) {
+export function renderUrl(url, text, type) {
   if (!text) {
     if (!url) return ''
 
-    return renderMaskedText(url, url, type)
-  }
-
-  const renderedTitle = renderSectionTitle(text, type)
-  if (!url) return renderedTitle
-
-  return renderMaskedText(url, renderedTitle, type)
-}
-
-/**
- * @param {string} url
- * @param {string} text
- * @param {string} type
- * @returns {string} HTML string
- */
-export function renderMaskedText(url, text, type) {
-  if (!text) {
-    if (!url) return ''
-
-    return renderMaskedText(url, url, type)
+    return renderUrl(url, url, type)
   }
 
   if (!url) return text
@@ -267,8 +239,7 @@ export default {
   date: renderDate,
   name: renderName,
   experience: renderExperience,
-  maskedImage: renderMaskedImage,
-  maskedTitle: renderMaskedTitle,
-  maskedText: renderMaskedText,
+  image: renderImage,
+  url: renderUrl,
   dots: renderDots
 }

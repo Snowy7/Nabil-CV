@@ -78,10 +78,13 @@ export function renderProjects(data) {
   return data.map(renderProject).join('')
 
   function renderProject({ name, description, url, date }) {
+    const type = 'project'
+    const renderedName = render.item.sectionTitle(name, type)
+
     const nameContainer = render.container.empty(
       '<div class="project-header">',
 
-      render.item.maskedTitle(url, name, 'project'),
+      render.item.url(url, renderedName, type),
       render.item.date(date, 'project'),
 
       '</div>'
@@ -107,13 +110,15 @@ export function renderCertificates(data) {
   return data.map(renderCertificate).join('')
 
   function renderCertificate({ name, id, image, link, provider }) {
+    const renderedImage = render.item.image(image, name, 'certificate')
+
     return render.container.empty(
       '<div class="certificate">',
 
-      render.item.maskedImage(image, link, name, 'certificate', 'provider'),
+      render.item.url(link, renderedImage, 'provider'),
       render.item.sectionTitle(name, 'certificate'),
       render.item.text(id, 'certificate-id'),
-      render.item.maskedText(provider.link, provider.name, 'provider'),
+      render.item.url(provider.link, provider.name, 'provider'),
 
       '</div>'
     )
