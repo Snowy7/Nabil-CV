@@ -1,5 +1,7 @@
 /** @import { Account, Certificate, Contact, Header, Interest, Language, PersonalInfo, Project, Skill, Tool } from './types.js' */
 
+import render from './components.js'
+
 /**
  * Renders header content with job title and tagline
  * @param {Header} data - Header information
@@ -8,13 +10,9 @@
 const renderHeader = ({ title, tagline }) => {
   let html = ''
 
-  if (title) {
-    html += `<h1>${title}</h1>`
-  }
+  if (title) html += render.title(title)
 
-  if (tagline) {
-    html += `<p class="tagline">${tagline}</p>`
-  }
+  if (tagline) html += render.tagline(tagline)
 
   return html.trim()
 }
@@ -27,17 +25,11 @@ const renderHeader = ({ title, tagline }) => {
 const renderPersonalInfo = ({ name, age, sex }) => {
   let html = ''
 
-  if (name) {
-    html += `<dt>Name</dt><dd>${name}</dd>`
-  }
+  if (name) html += render.keyValue('Name', name)
 
-  if (age) {
-    html += `<dt>Age</dt><dd>${age}</dd>`
-  }
+  if (age) html += render.keyValue('Age', age.toString())
 
-  if (sex) {
-    html += `<dt>Gender</dt><dd>${sex}</dd>`
-  }
+  if (sex) html += render.keyValue('Gender', sex)
 
   return html.trim()
 }
@@ -50,25 +42,9 @@ const renderPersonalInfo = ({ name, age, sex }) => {
 const renderContact = ({ email, phone }) => {
   let html = ''
 
-  if (email) {
-    html += `
-<a href="mailto:${email}" aria-label="Send email">
-  <span class="iconify-inline" data-icon="ic:round-email"></span>
-  ${email}
-</a>
-`.trim()
-  }
+  if (email) html += render.email(email)
 
-  if (phone) {
-    const cleanedPhone = phone.replace(/[^+\d]/g, '')
-
-    html += `
-<a href="tel:${cleanedPhone}" aria-label="Call phone number">
-  <span class="iconify-inline" data-icon="ic:round-phone"></span>
-  ${phone}
-</a>
-`.trim()
-  }
+  if (phone) html += render.phone(phone)
 
   return html.trim()
 }
@@ -85,13 +61,9 @@ const renderAccounts = (data) => {
 
       html += `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`
 
-      if (icon) {
-        html += `<span class="iconify-inline" data-icon="${icon}"></span>`
-      }
+      if (icon) html += render.icon(icon)
 
-      if (name) {
-        html += name
-      }
+      if (name) html += name
 
       html += '</a>'
 
@@ -106,30 +78,6 @@ const renderAccounts = (data) => {
  * @returns {string} HTML string for project
  */
 const renderProjects = (data) => {
-  /**
-   * Formats date from YYYY-MM to Month Year
-   * @param {string} dateString - Date in YYYY-MM format
-   * @returns {string} Formatted date string
-   */
-  const formatDate = (dateString) => {
-    const [year, month] = dateString.split('-')
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ]
-    return `${monthNames[parseInt(month) - 1]} ${year}`
-  }
-
   return data
     .map(({ name, description, url, date }) => {
       let html = ''
@@ -139,23 +87,14 @@ const renderProjects = (data) => {
       if (name) {
         html += '<div class="project-header">'
 
-        html += `    
-<a href="${url}" target="_blank" rel="noopener noreferrer" class="project-link">
-  <h3 class="project-name">${name}</h3>
-</a>
-`.trim()
+        html += render.maskedTitle(url, name, 'project')
 
-        if (date) {
-          const formattedDate = formatDate(date)
-          html += `<time class="project-date" datetime="${date}">${formattedDate}</time>`
-        }
+        if (date) html += render.date(date, 'project')
 
         html += '</div>'
       }
 
-      if (description) {
-        html += `<p class="project-description">${description}</p>`
-      }
+      if (description) html += render.description(description, 'project')
 
       html += '</article>'
 
@@ -176,29 +115,15 @@ const renderCertificates = (data) => {
 
       html += '<div class="certificate">'
 
-      if (image) {
-        html += `
-<a href="${link}" target="_blank" rel="noopener noreferrer" class="provider-link">
-  <img src="${image}" alt="${name} certificate" class="certificate-image" onerror="this.style.display='none'">
-</a>
-`.trim()
-      }
+      if (image)
+        html += render.maskedImage(image, link, name, 'certificate', 'provider')
 
-      if (name) {
-        html += `<h3 class="certificate-name">${name}</h3>`
-      }
+      if (name) html += `<h3 class="certificate-name">${name}</h3>`
 
-      if (id) {
-        html += `<p class="certificate-id">${id}</p>`
-      }
+      if (id) html += render.text(id, 'certificate-id')
 
-      if (provider) {
-        html += `
-<a href="${provider.link}" target="_blank" rel="noopener noreferrer" class="provider-link">
-  ${provider.name}
-</a>
-`.trim()
-      }
+      if (provider)
+        html += render.maskedText(provider.link, provider.name, 'provider')
 
       html += '</div>'
 
@@ -216,24 +141,13 @@ const renderSkills = (data) => {
   return data
     .sort((a, b) => b.efficiency - a.efficiency)
     .map(({ name, efficiency }) => {
-      const dots = Array.from({ length: 10 }, (_, i) => {
-        const filled = i < efficiency ? 'filled' : ''
-        return `<span class="skill-dot ${filled}"></span>`
-      }).join('')
-
       let html = ''
 
       html += '<div class="skill">'
 
-      if (name) {
-        html += `<span class="skill-name">${name}</span>`
-      }
+      if (name) html += render.name(name, 'skill')
 
-      html += `
-<div class="skill-level" aria-label="Skill level ${efficiency} out of 10">
-    ${dots}
-</div>
-`.trim()
+      html += render.dotsContainer(efficiency)
 
       html += '</div>'
 
@@ -260,9 +174,7 @@ const renderTools = (data) => {
       if (name) {
         html += `<a href="${link}" target="_blank" rel="noopener noreferrer">`
 
-        if (icon) {
-          html += `<span class="iconify-inline" data-icon="${icon}"></span>`
-        }
+        if (icon) html += render.icon(icon)
 
         html += name
 
@@ -271,11 +183,8 @@ const renderTools = (data) => {
 
       html += '</div>'
 
-      if (yearsOfExperience) {
-        const experienceText =
-          yearsOfExperience === 1 ? '1 year' : `${yearsOfExperience} years`
-        html += `<span class="tool-experience">${experienceText}</span>`
-      }
+      if (yearsOfExperience)
+        html += render.experience(yearsOfExperience, 'tool')
 
       html += '</div>'
     })
@@ -294,11 +203,8 @@ const renderInterests = (data) => {
 
       html += '<span class="interest">'
 
-      if (icon) {
-        html += `${icon} ${name}`
-      } else {
-        html += name
-      }
+      if (icon) html += `${icon} ${name}`
+      else html += name
 
       html += '</span>'
 
@@ -319,13 +225,9 @@ const renderLanguages = (data) => {
 
       html += '<div class="language">'
 
-      if (name) {
-        html += `<span class="language-name">${name}</span>`
-      }
+      if (name) html += render.name(name, 'language')
 
-      if (efficiency) {
-        html += `<span class="language-level">${efficiency}</span>`
-      }
+      if (efficiency) html += render.name(efficiency, 'language')
 
       html += '</div>'
 
