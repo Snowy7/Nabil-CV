@@ -7,7 +7,7 @@ import render from './components.js'
  * @param {Header} data - Header information
  * @returns {string} HTML string for header
  */
-const renderHeader = ({ title, tagline }) => {
+export function renderHeader({ title, tagline }) {
   let html = ''
 
   if (title) html += render.title(title)
@@ -22,7 +22,7 @@ const renderHeader = ({ title, tagline }) => {
  * @param {PersonalInfo} data - Personal information object
  * @returns {string} HTML string for personal info
  */
-const renderPersonalInfo = ({ name, age, sex }) => {
+export function renderPersonalInfo({ name, age, sex }) {
   let html = ''
 
   if (name) html += render.keyValue('Name', name)
@@ -39,7 +39,7 @@ const renderPersonalInfo = ({ name, age, sex }) => {
  * @param {Contact} data - Contact information
  * @returns {string} HTML string for contact info
  */
-const renderContact = ({ email, phone }) => {
+export function renderContact({ email, phone }) {
   let html = ''
 
   if (email) html += render.email(email)
@@ -54,7 +54,7 @@ const renderContact = ({ email, phone }) => {
  * @param {Account[]} data - Array of account objects
  * @returns {string} HTML string for accounts
  */
-const renderAccounts = (data) => {
+export function renderAccounts(data) {
   return data
     .map(({ name, url, icon }) => {
       let html = ''
@@ -77,7 +77,7 @@ const renderAccounts = (data) => {
  * @param {Project[]} data - Project object
  * @returns {string} HTML string for project
  */
-const renderProjects = (data) => {
+export function renderProjects(data) {
   return data
     .map(({ name, description, url, date }) => {
       let html = ''
@@ -108,7 +108,7 @@ const renderProjects = (data) => {
  * @param {Certificate[]} data - Certificate object
  * @returns {string} HTML string for certificate
  */
-const renderCertificates = (data) => {
+export function renderCertificates(data) {
   return data
     .map(({ name, id, image, link, provider }) => {
       let html = ''
@@ -137,7 +137,7 @@ const renderCertificates = (data) => {
  * @param {Skill[]} data - Skill object
  * @returns {string} HTML string for skill
  */
-const renderSkills = (data) => {
+export function renderSkills(data) {
   return data
     .sort((a, b) => b.efficiency - a.efficiency)
     .map(({ name, efficiency }) => {
@@ -161,7 +161,7 @@ const renderSkills = (data) => {
  * @param {Tool[]} data - Tool object
  * @returns {string} HTML string for tool
  */
-const renderTools = (data) => {
+export function renderTools(data) {
   return data
     .sort((a, b) => b.yearsOfExperience - a.yearsOfExperience)
     .map(({ name, icon, link, yearsOfExperience }) => {
@@ -196,7 +196,7 @@ const renderTools = (data) => {
  * @param {Interest[]} data - Interest object
  * @returns {string} HTML string for interest
  */
-const renderInterests = (data) => {
+export function renderInterests(data) {
   return data
     .map(({ name, icon }) => {
       let html = ''
@@ -218,7 +218,7 @@ const renderInterests = (data) => {
  * @param {Language[]} data - Language object
  * @returns {string} HTML string for language
  */
-const renderLanguages = (data) => {
+export function renderLanguages(data) {
   return data
     .map(({ name, efficiency }) => {
       let html = ''

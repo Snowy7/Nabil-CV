@@ -6,7 +6,7 @@ import render from './data.js'
  * @param {Array|Object} data - Data to render
  * @param {(data: any) => string} renderFunction - Function to render individual items
  */
-const populateSection = (sectionId, data, renderFunction) => {
+function populateSection(sectionId, data, renderFunction) {
   const el = document.getElementById(sectionId)
   if (!el) {
     console.error(`Element with ID ${sectionId} not found`)
@@ -27,7 +27,7 @@ const populateSection = (sectionId, data, renderFunction) => {
  * Initializes the page by loading all sections
  * @param {Object} data - Data for the page
  */
-const initializePage = (data) => {
+function initializePage(data) {
   // In a real implementation, this would load data from JSON files
   // For now, we'll use the sample data
 
@@ -56,7 +56,7 @@ const initializePage = (data) => {
  * @param {string} filePath - Path to JSON file
  * @returns {Promise<Object>} Parsed JSON data
  */
-const loadJSON = async (filePath) => {
+async function loadJSON(filePath) {
   // In a real implementation:
   try {
     const res = await fetch(filePath)
