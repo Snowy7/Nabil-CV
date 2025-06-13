@@ -1,6 +1,16 @@
 /** @import { Account, Certificate, Contact, Header, Interest, Language, PersonalInfo, Project, Skill, Tool } from '../types.js' */
 
-import render from './items.js'
+import containerRenderers from './containers.js'
+import itemRenderers from './items.js'
+
+const render = {
+  container: {
+    ...containerRenderers
+  },
+  item: {
+    ...itemRenderers
+  }
+}
 
 /**
  * Renders header content with job title and tagline
@@ -8,12 +18,10 @@ import render from './items.js'
  * @returns {string} HTML string for header
  */
 export function renderHeader({ title, tagline }) {
-  let html = ''
-
-  html += render.title(title)
-  html += render.tagline(tagline)
-
-  return html.trim()
+  return render.container.empty(
+    render.item.title(title),
+    render.item.tagline(tagline)
+  )
 }
 
 /**
@@ -22,13 +30,11 @@ export function renderHeader({ title, tagline }) {
  * @returns {string} HTML string for personal info
  */
 export function renderPersonalInfo({ name, age, sex }) {
-  let html = ''
-
-  html += render.keyValue('Name', name)
-  html += render.keyValue('Age', age.toString())
-  html += render.keyValue('Gender', sex)
-
-  return html.trim()
+  return render.container.empty(
+    render.item.keyValue('Name', name),
+    render.item.keyValue('Age', age.toString()),
+    render.item.keyValue('Gender', sex)
+  )
 }
 
 /**
@@ -37,12 +43,10 @@ export function renderPersonalInfo({ name, age, sex }) {
  * @returns {string} HTML string for contact info
  */
 export function renderContact({ email, phone }) {
-  let html = ''
-
-  html += render.email(email)
-  html += render.phone(phone)
-
-  return html.trim()
+  return render.container.empty(
+    render.item.email(email),
+    render.item.phone(phone)
+  )
 }
 
 /**
@@ -54,16 +58,14 @@ export function renderAccounts(data) {
   return data.map(renderAccount).join('')
 
   function renderAccount({ name, url, icon }) {
-    let html = ''
+    return render.container.empty(
+      `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`,
 
-    html += `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`
+      render.item.icon(icon),
+      name,
 
-    html += render.icon(icon)
-    html += name
-
-    html += '</a>'
-
-    return html.trim()
+      '</a>'
+    )
   }
 }
 
@@ -76,23 +78,23 @@ export function renderProjects(data) {
   return data.map(renderProject).join('')
 
   function renderProject({ name, description, url, date }) {
-    let html = ''
+    const nameContainer = render.container.empty(
+      '<div class="project-header">',
 
-    html += '<article class="project">'
+      render.item.maskedTitle(url, name, 'project'),
+      render.item.date(date, 'project'),
 
-    if (name) {
-      html += '<div class="project-header">'
+      '</div>'
+    )
 
-      html += render.maskedTitle(url, name, 'project')
-      html += render.date(date, 'project')
+    return render.container.empty(
+      '<article class="project">',
 
-      html += '</div>'
-    }
-    html += render.description(description, 'project')
+      nameContainer,
+      render.item.description(description, 'project'),
 
-    html += '</article>'
-
-    return html.trim()
+      '</article>'
+    )
   }
 }
 
@@ -105,18 +107,16 @@ export function renderCertificates(data) {
   return data.map(renderCertificate).join('')
 
   function renderCertificate({ name, id, image, link, provider }) {
-    let html = ''
+    return render.container.empty(
+      '<div class="certificate">',
 
-    html += '<div class="certificate">'
+      render.item.maskedImage(image, link, name, 'certificate', 'provider'),
+      render.item.sectionTitle(name, 'certificate'),
+      render.item.text(id, 'certificate-id'),
+      render.item.maskedText(provider.link, provider.name, 'provider'),
 
-    html += render.maskedImage(image, link, name, 'certificate', 'provider')
-    html += render.sectionTitle(name, 'certificate')
-    html += render.text(id, 'certificate-id')
-    html += render.maskedText(provider.link, provider.name, 'provider')
-
-    html += '</div>'
-
-    return html.trim()
+      '</div>'
+    )
   }
 }
 
@@ -132,16 +132,14 @@ export function renderSkills(data) {
     .join('')
 
   function renderSkill({ name, efficiency }) {
-    let html = ''
+    return render.container.empty(
+      '<div class="skill">',
 
-    html += '<div class="skill">'
+      render.item.name(name, 'skill'),
+      render.container.dots(efficiency),
 
-    html += render.name(name, 'skill')
-    html += render.dotsContainer(efficiency)
-
-    html += '</div>'
-
-    return html.trim()
+      '</div>'
+    )
   }
 }
 
@@ -157,27 +155,31 @@ export function renderTools(data) {
     .join('')
 
   function renderTool({ name, icon, link, yearsOfExperience }) {
-    let html = ''
+    const nameContainer = render.container.empty(
+      `<a href="${link}" target="_blank" rel="noopener noreferrer">`,
 
-    html += '<div class="tool">'
+      render.item.icon(icon),
+      name,
 
-    html += '<div class="tool-name">'
+      '</a>'
+    )
 
-    if (name) {
-      html += `<a href="${link}" target="_blank" rel="noopener noreferrer">`
+    const toolNameContainer = render.container.empty(
+      '<div class="tool-name">',
 
-      html += render.icon(icon)
-      html += name
+      nameContainer,
 
-      html += '</a>'
-    }
+      '</div>'
+    )
 
-    html += '</div>'
-    html += render.experience(yearsOfExperience, 'tool')
+    return render.container.empty(
+      '<div class="tool">',
 
-    html += '</div>'
+      toolNameContainer,
+      render.item.experience(yearsOfExperience, 'tool'),
 
-    return html.trim()
+      '</div>'
+    )
   }
 }
 
@@ -190,15 +192,13 @@ export function renderInterests(data) {
   return data.map(renderInterest).join('')
 
   function renderInterest({ name, icon }) {
-    let html = ''
+    return render.container.empty(
+      '<span class="interest">',
 
-    html += '<span class="interest">'
+      `${icon} ${name}`,
 
-    html += `${icon} ${name}`
-
-    html += '</span>'
-
-    return html.trim()
+      '</span>'
+    )
   }
 }
 
@@ -211,16 +211,14 @@ export function renderLanguages(data) {
   return data.map(renderLanguage).join('')
 
   function renderLanguage({ name, efficiency }) {
-    let html = ''
+    return render.container.empty(
+      '<div class="language">',
 
-    html += '<div class="language">'
+      render.item.name(name, 'language'),
+      render.item.name(efficiency, 'language'),
 
-    html += render.name(name, 'language')
-    html += render.name(efficiency, 'language')
-
-    html += '</div>'
-
-    return html.trim()
+      '</div>'
+    )
   }
 }
 

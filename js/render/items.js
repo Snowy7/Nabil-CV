@@ -238,20 +238,6 @@ export function renderMaskedText(url, text, type) {
  * @param {number} efficiency
  * @returns {string} HTML string
  */
-export function renderDotsContainer(efficiency) {
-  if (!efficiency) efficiency = 0
-
-  return `
-<div class="skill-level" aria-label="Skill level ${efficiency} out of 10">
-    ${renderDots(efficiency)}
-</div>
-`.trim()
-}
-
-/**
- * @param {number} efficiency
- * @returns {string} HTML string
- */
 export function renderDots(efficiency) {
   if (!efficiency) efficiency = 0
 
@@ -284,6 +270,5 @@ export default {
   maskedImage: renderMaskedImage,
   maskedTitle: renderMaskedTitle,
   maskedText: renderMaskedText,
-  dotsContainer: renderDotsContainer,
   dots: renderDots
 }
