@@ -52,12 +52,11 @@ function initializePage(data) {
 }
 
 /**
- * Simulates loading JSON data (in real implementation, would use fetch)
+ * Loads JSON data from specified file path
  * @param {string} filePath - Path to JSON file
  * @returns {Promise<Object>} Parsed JSON data
  */
 async function loadJSON(filePath) {
-  // In a real implementation:
   try {
     const res = await fetch(filePath)
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
@@ -68,10 +67,12 @@ async function loadJSON(filePath) {
   }
 }
 
-// Initialize the page when DOM is ready
-document.addEventListener('DOMContentLoaded', async () => {
-  const page = 'game-programmer'
-
+/**
+ * Simulates loading JSON data (in real implementation, would use fetch)
+ * @param {string} page - Path to JSON file
+ * @returns {Promise<Object>} Parsed JSON data
+ */
+async function loadData(page) {
   const sections = {
     shared: ['personal-info', 'contact', 'accounts'],
     specific: [
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     )
   }
 
-  const data = {
+  return {
     header: sectionData.specific[0],
     personalInfo: sectionData.shared[0],
     contact: sectionData.shared[1],
@@ -106,6 +107,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     interests: sectionData.specific[5],
     languages: sectionData.specific[6]
   }
+}
+
+// Initialize the page when DOM is ready
+document.addEventListener('DOMContentLoaded', async () => {
+  const page = 'game-programmer'
+  const data = await loadData(page)
 
   initializePage(data)
 })
