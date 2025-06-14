@@ -28,14 +28,14 @@ export {}
 /**
  * @typedef {Object} Account
  * @property {string} name
- * @property {string} url
+ * @property {string} link
  * @property {string} icon
  */
 
 /**
  * @typedef {Object} Project
  * @property {string} name
- * @property {string} url
+ * @property {string} link
  * @property {DateStr} date - Format: "YYYY-MM"
  * @property {string} description
  */

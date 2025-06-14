@@ -57,8 +57,12 @@ export function renderContact({ email, phone }) {
 export function renderAccounts(data) {
   return data.map(renderAccount).join('')
 
-  function renderAccount({ name, url, icon }) {
-    return render.container.url(url, `Visit ${name} profile`, [
+  /**
+   * @param {Account} account - Account object
+   * @returns {string} HTML string for account
+   */
+  function renderAccount({ name, link, icon }) {
+    return render.container.url(link, `Visit ${name} profile`, [
       render.item.icon(icon),
       name
     ])
@@ -75,11 +79,15 @@ export function renderProjects(data) {
 
   return data.map(renderProject).join('')
 
-  function renderProject({ name, description, url, date }) {
+  /**
+   * @param {Project} project - Project object
+   * @returns {string} HTML string for project
+   */
+  function renderProject({ name, description, link, date }) {
     const renderedName = render.item.sectionTitle(name, type)
 
     const nameContainer = render.container.div(`${type}-header`, [
-      render.item.url(url, renderedName, type),
+      render.item.url(link, renderedName, type),
       render.item.date(date, type)
     ])
 
@@ -101,6 +109,10 @@ export function renderCertificates(data) {
 
   return data.map(renderCertificate).join('')
 
+  /**
+   * @param {Certificate} certificate - Certificate object
+   * @returns {string} HTML string for certificate
+   */
   function renderCertificate({ name, id, image, link, provider }) {
     const renderedImage = render.item.image(image, name, type)
 
@@ -126,6 +138,10 @@ export function renderSkills(data) {
     .map(renderSkill)
     .join('')
 
+  /**
+   * @param {Skill} skill - Skill object
+   * @returns {string} HTML string for skill
+   */
   function renderSkill({ name, efficiency }) {
     return render.container.div(type, [
       render.item.name(name, type),
@@ -147,6 +163,10 @@ export function renderTools(data) {
     .map(renderTool)
     .join('')
 
+  /**
+   * @param {Tool} tool - Tool object
+   * @returns {string} HTML string for tool
+   */
   function renderTool({ name, icon, link, yearsOfExperience }) {
     const nameContainer = render.container.url(link, '', [
       render.item.icon(icon),
@@ -174,6 +194,10 @@ export function renderInterests(data) {
 
   return data.map(renderInterest).join('')
 
+  /**
+   * @param {Interest} interest - Interest object
+   * @returns {string} HTML string for interest
+   */
   function renderInterest({ name, icon }) {
     return render.container.div(type, [`${icon} ${name}`])
   }
@@ -189,6 +213,10 @@ export function renderLanguages(data) {
 
   return data.map(renderLanguage).join('')
 
+  /**
+   * @param {Language} language - Language object
+   * @returns {string} HTML string for language
+   */
   function renderLanguage({ name, efficiency }) {
     return render.container.div(type, [
       render.item.name(name, type),
