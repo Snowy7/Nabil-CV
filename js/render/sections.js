@@ -64,6 +64,7 @@ export function renderAccounts(data) {
   function renderAccount({ name, link, icon }) {
     return render.container.url(link, `Visit ${name} profile`, [
       render.item.icon(icon),
+      ' ',
       name
     ])
   }
@@ -170,6 +171,7 @@ export function renderTools(data) {
   function renderTool({ name, icon, link, yearsOfExperience }) {
     const nameContainer = render.container.url(link, '', [
       render.item.icon(icon),
+      ' ',
       name
     ])
 
@@ -199,7 +201,7 @@ export function renderInterests(data) {
    * @returns {string} HTML string for interest
    */
   function renderInterest({ name, icon }) {
-    return render.container.div(type, [`${icon} ${name}`])
+    return render.container.div(type, [icon, ' ', name])
   }
 }
 

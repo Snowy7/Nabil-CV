@@ -74,8 +74,7 @@ export function renderEmail(str) {
 
   return `
 <a href="mailto:${str}" aria-label="Send email">
-  ${renderIcon('ic:round-email')}
-  ${str}
+  ${renderIcon('ic:round-email')} ${str}
 </a>
 `.trim()
 }
@@ -91,8 +90,7 @@ export function renderPhone(str) {
 
   return `
 <a href="tel:${cleanedPhone}" aria-label="Call phone number">
-  ${renderIcon('ic:round-phone')}
-  ${str}
+  ${renderIcon('ic:round-phone')} ${str}
 </a>
 `.trim()
 }
