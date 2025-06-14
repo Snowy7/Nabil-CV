@@ -11,7 +11,7 @@
         "type": "string",
         "description": "Name of the account/platform"
       },
-      "url": {
+      "link": {
         "type": "string",
         "format": "uri",
         "description": "URL to the account"
@@ -21,7 +21,7 @@
         "description": "Icon identifier or class"
       }
     },
-    "required": ["name", "url", "icon"],
+    "required": ["name", "link", "icon"],
     "additionalProperties": false
   }
 }

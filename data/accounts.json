@@ -1,47 +1,47 @@
 [
   {
     "name": "itch.io",
-    "url": "https://assayyaad.itch.io",
+    "link": "https://assayyaad.itch.io",
     "icon": "cib:itch-io"
   },
   {
     "name": "Global Game Jam",
-    "url": "https://globalgamejam.org/users/assayyaad",
+    "link": "https://globalgamejam.org/users/assayyaad",
     "icon": "hugeicons:global"
   },
   {
     "name": "Wakatime",
-    "url": "https://wakatime.com/@Assayyaad",
+    "link": "https://wakatime.com/@Assayyaad",
     "icon": "simple-icons:wakatime"
   },
   {
     "name": "GitLab",
-    "url": "https://gitlab.com/Assayyaad",
+    "link": "https://gitlab.com/Assayyaad",
     "icon": "ri:gitlab-fill"
   },
   {
     "name": "GitHub",
-    "url": "https://github.com/Assayyaad",
+    "link": "https://github.com/Assayyaad",
     "icon": "mdi:github"
   },
   {
     "name": "Sololearn",
-    "url": "https://www.sololearn.com/en/profile/17032869",
+    "link": "https://www.sololearn.com/en/profile/17032869",
     "icon": "simple-icons:sololearn"
   },
   {
     "name": "FreeCodeCamp",
-    "url": "https://www.freecodecamp.org/Assayyaad",
+    "link": "https://www.freecodecamp.org/Assayyaad",
     "icon": "simple-icons:freecodecamp"
   },
   {
     "name": "LinkedIn",
-    "url": "https://linkedin.com/in/Assayyaad",
+    "link": "https://linkedin.com/in/Assayyaad",
     "icon": "mdi:linkedin"
   },
   {
     "name": "𝕏 (Twitter)",
-    "url": "https://x.com/in/Assayyaad",
+    "link": "https://x.com/in/Assayyaad",
     "icon": "pajamas:twitter"
   }
 ]
