@@ -111,6 +111,8 @@ export function renderIcon(str) {
  * @returns {string} HTML string
  */
 export function renderDate(str, type) {
+  const lang = document.documentElement.lang || 'ar'
+
   let formattedDate = formatDate(str)
 
   if (!str) formattedDate = 'Month 0000'
@@ -124,22 +126,38 @@ export function renderDate(str, type) {
    */
   function formatDate(str) {
     const [year, month] = str.split('-')
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ]
+    const monthNames = {
+      ar: [
+        'يناير',
+        'فبراير',
+        'مارس',
+        'أبريل',
+        'مايو',
+        'يونيو',
+        'يوليو',
+        'أغسطس',
+        'سبتمبر',
+        'أكتوبر',
+        'نوفمبر',
+        'ديسمبر'
+      ],
+      en: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ]
+    }
 
-    return `${monthNames[parseInt(month) - 1]} ${year}`
+    return `${monthNames[lang][parseInt(month) - 1]} ${year}`
   }
 }
 
@@ -160,9 +178,20 @@ export function renderName(str, type) {
  * @returns {string} HTML string
  */
 export function renderExperience(num, type) {
+  const lang = document.documentElement.lang || 'ar'
+
   if (!num) num = 0
 
-  const text = num === 1 ? '1 year' : `${num} years`
+  const text =
+    lang === 'ar'
+      ? num === 1
+        ? 'سنة'
+        : num === 2
+        ? 'سنتان'
+        : `${num} سنوات`
+      : num === 1
+      ? '1 year'
+      : `${num} years`
   return `<span class="${type}-experience">${text}</span>`
 }
 
