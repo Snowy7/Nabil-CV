@@ -1,37 +1,135 @@
 [
   {
     "name": {
-      "ar": "C#",
-      "en": "C#"
+      "ar": "حل المشاكل",
+      "en": "Problem Solving"
     },
     "efficiency": 10
   },
   {
     "name": {
-      "ar": "C++",
-      "en": "C++"
+      "ar": "البرمجة الكائنية التوجه",
+      "en": "Object-Oriented Programming"
+    },
+    "efficiency": 10
+  },
+  {
+    "name": {
+      "ar": "البرمجة الوظيفية",
+      "en": "Functional Programming"
+    },
+    "efficiency": 8
+  },
+  {
+    "name": {
+      "ar": "تحليل الترميز",
+      "en": "Code Analysis"
+    },
+    "efficiency": 9
+  },
+  {
+    "name": {
+      "ar": "إكتشاف الأخطاء",
+      "en": "Debugging"
+    },
+    "efficiency": 9
+  },
+  {
+    "name": {
+      "ar": "إختبار البرمجيات",
+      "en": "Software Testing"
+    },
+    "efficiency": 6
+  },
+  {
+    "name": {
+      "ar": "تصميم البرمجيات",
+      "en": "Software Design"
+    },
+    "efficiency": 8
+  },
+  {
+    "name": {
+      "ar": "توثيق البرمجيات",
+      "en": "Software Documentation"
+    },
+    "efficiency": 6
+  },
+  {
+    "name": {
+      "ar": "أنماط التصميم",
+      "en": "Design Patterns"
+    },
+    "efficiency": 5
+  },
+  {
+    "name": {
+      "ar": "هياكل البيانات",
+      "en": "Data Structures"
+    },
+    "efficiency": 8
+  },
+  {
+    "name": {
+      "ar": "برمجة بالذكاء الاصطناعي",
+      "en": "Programming with AI"
+    },
+    "efficiency": 5
+  },
+  {
+    "name": {
+      "ar": "برمجة C#",
+      "en": "C# Programming"
+    },
+    "efficiency": 10
+  },
+  {
+    "name": {
+      "ar": "برمجة C++",
+      "en": "C++ Programming"
     },
     "efficiency": 3
   },
   {
     "name": {
-      "ar": "JavaScript",
-      "en": "JavaScript"
+      "ar": "برمجة Java",
+      "en": "Java Programming"
+    },
+    "efficiency": 3
+  },
+  {
+    "name": {
+      "ar": "برمجة JavaScript",
+      "en": "JavaScript Programming"
     },
     "efficiency": 10
   },
   {
     "name": {
-      "ar": "GDScript",
-      "en": "GDScript"
+      "ar": "برمجة GDScript",
+      "en": "GDScript Programming"
     },
     "efficiency": 2
+  },
+  {
+    "name": {
+      "ar": "برمجة Odin",
+      "en": "Odin Programming"
+    },
+    "efficiency": 1
+  },
+  {
+    "name": {
+      "ar": "برمجة Rust",
+      "en": "Rust Programming"
+    },
+    "efficiency": 1
   },
   {
     "name": {
       "ar": "Git",
       "en": "Git"
     },
-    "efficiency": 9
+    "efficiency": 7
   }
 ]

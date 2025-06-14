@@ -1,14 +1,98 @@
 [
   {
     "name": {
-      "ar": "رحلة المقاتل",
-      "en": "Fighter Journey"
+      "ar": "المؤقتات البسيطة",
+      "en": "Simple Timers"
     },
-    "link": "https://assayyaad.itch.io/fighter-journey",
-    "date": "2025-05",
+    "link": "",
+    "date": "",
     "description": {
-      "ar": "قمت بتطوير نموذج أولي للعبة قتال ثنائية الأبعاد بمفردي باستخدام Unity و C#. تتميز اللعبة بنظام قتال ومهارات بسيط.",
-      "en": "Solo developed a 2D fighting game prototype using Unity and C#. The game features a simple combat and skill systems."
+      "ar": "مكتبة بسيطة لإنشاء مؤقتات في Unity",
+      "en": "A simple library for creating timers in Unity"
+    }
+  },
+  {
+    "name": {
+      "ar": "نظام يونيتي المتقدم",
+      "en": "Unity Advanced System"
+    },
+    "link": "",
+    "date": "",
+    "description": {
+      "ar": "نظام متقدم لاستبدال GameObject في يونيتي بنظام قائم على التركيب يتكون من متحكمات وأنظمة وعمال",
+      "en": "An advanced system to replace Unity's GameObject with a composition based architecture made of Controllers, Systems, and Workers"
+    }
+  },
+  {
+    "name": {
+      "ar": "تصور أنظمة الألعاب في فيزر",
+      "en": "Game Systems Visualization in Phaser"
+    },
+    "link": "https://assayyaad.itch.io/anthima-phaser",
+    "date": "2024-06",
+    "description": {
+      "ar": "تصور أنظمة الألعاب في فيزر هو مشروع يهدف إلى تصور وتطوير أنظمة الألعاب باستخدام إطار عمل فيزر.",
+      "en": "Game Systems Visualization in Phaser is a project aimed at visualizing and developing game systems using the Phaser framework."
+    }
+  },
+  {
+    "name": {
+      "ar": "الدائرة والتقاطع مع أودين وSDL2",
+      "en": "TicTacToe With Odin & SDL2"
+    },
+    "link": "https://assayyaad.itch.io/xo",
+    "date": "2025-02",
+    "description": {
+      "ar": "لعبة تيك تاك تو بسيطة تم تطويرها باستخدام أودين وSDL2",
+      "en": "A simple Tic Tac Toe game developed using Odin and SDL2"
+    }
+  },
+  {
+    "name": {
+      "ar": "أدوات تأثيرات العملات",
+      "en": "Coin Effects Tools"
+    },
+    "link": "https://assayyaad.itch.io/riyal-coin",
+    "date": "2025-03",
+    "description": {
+      "ar": "مجموعة من الأدوات لإنشاء تأثيرات العملات في الألعاب",
+      "en": "A set of tools for creating coin effects in games"
+    }
+  },
+  {
+    "name": {
+      "ar": "محاربو القرية",
+      "en": "Village Warriors"
+    },
+    "link": "https://assayyaad.itch.io/village-warriors",
+    "date": "2021-04",
+    "description": {
+      "ar": "لعبة تقمص أدوار مغامرات مع نظام قتال معقد يعتمد على الأدوار",
+      "en": "An RPG adventure game with a complex turn-based combat system"
+    }
+  },
+  {
+    "name": {
+      "ar": "رعب الشبكة",
+      "en": "Grid Horror"
+    },
+    "link": "https://assayyaad.itch.io/grid-horror",
+    "date": "2025-02",
+    "description": {
+      "ar": "لعبة رعب بسيطة مع خريطة شبكية تم إنشاؤها إجرائيًا.",
+      "en": "A simple horror game with a procedurally generated grid map"
+    }
+  },
+  {
+    "name": {
+      "ar": "الدجاجة الهاربة",
+      "en": "Chicken Out"
+    },
+    "link": "https://assayyaad.itch.io/chicken-out",
+    "date": "2021-06",
+    "description": {
+      "ar": "لعبة قتال متعددة اللاعبين عبر الإنترنت لـ 4 لاعبين مع أسلحة حجر-ورقة-مقص وعناصر تعزيز القوة",
+      "en": "An online 4 players multiplayer fighting game with rock-paper-scissors guns and powerup items"
     }
   }
 ]

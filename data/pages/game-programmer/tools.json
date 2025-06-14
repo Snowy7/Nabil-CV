@@ -9,19 +9,31 @@
     "name": "Unity",
     "icon": "bi:unity",
     "link": "https://unity.com",
-    "yearsOfExperience": 8
+    "yearsOfExperience": 6
   },
   {
     "name": "Godot",
     "icon": "devicon-plain:godot",
     "link": "https://godotengine.org",
-    "yearsOfExperience": 1
+    "yearsOfExperience": 0
+  },
+  {
+    "name": "Bevy",
+    "icon": "simple-icons:bevy",
+    "link": "https://bevyengine.org",
+    "yearsOfExperience": 0
+  },
+  {
+    "name": "raylib",
+    "icon": "simple-icons:raylib",
+    "link": "https://raylib.com",
+    "yearsOfExperience": 0
   },
   {
     "name": "Visual Studio",
     "icon": "uil:visual-studio",
     "link": "https://visualstudio.com",
-    "yearsOfExperience": 8
+    "yearsOfExperience": 6
   },
   {
     "name": "Visual Studio Code",
@@ -52,5 +64,17 @@
     "icon": "simple-icons:gitkraken",
     "link": "https://www.gitkraken.com",
     "yearsOfExperience": 3
+  },
+  {
+    "name": "Milanote",
+    "icon": "simple-icons:milanote",
+    "link": "https://milanote.com",
+    "yearsOfExperience": 3
+  },
+  {
+    "name": "Physical Whiteboard",
+    "icon": "fluent:whiteboard-20-filled",
+    "link": "https://www.absoluteofficecomforts.com.au/wp-content/uploads/2019/01/Whiteboard-Porcelain-1000x759.png",
+    "yearsOfExperience": 5
   }
 ]
