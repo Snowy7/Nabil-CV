@@ -1,5 +1,32 @@
 [
-  { "name": "Arabic", "efficiency": "Native" },
-  { "name": "English", "efficiency": "Fluent" },
-  { "name": "Japanese", "efficiency": "Basic" }
+  {
+    "name": {
+      "ar": "العربية",
+      "en": "Arabic"
+    },
+    "efficiency": {
+      "ar": "أصلية",
+      "en": "Native"
+    }
+  },
+  {
+    "name": {
+      "ar": "الإنجليزية",
+      "en": "English"
+    },
+    "efficiency": {
+      "ar": "بطلاقة",
+      "en": "Fluent"
+    }
+  },
+  {
+    "name": {
+      "ar": "اليابانية",
+      "en": "Japanese"
+    },
+    "efficiency": {
+      "ar": "أساسية",
+      "en": "Basic"
+    }
+  }
 ]

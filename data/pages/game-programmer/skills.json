@@ -1,7 +1,37 @@
 [
-  { "name": "C#", "efficiency": 10 },
-  { "name": "C++", "efficiency": 3 },
-  { "name": "JavaScript", "efficiency": 10 },
-  { "name": "GDScript", "efficiency": 2 },
-  { "name": "Git", "efficiency": 9 }
+  {
+    "name": {
+      "ar": "C#",
+      "en": "C#"
+    },
+    "efficiency": 10
+  },
+  {
+    "name": {
+      "ar": "C++",
+      "en": "C++"
+    },
+    "efficiency": 3
+  },
+  {
+    "name": {
+      "ar": "JavaScript",
+      "en": "JavaScript"
+    },
+    "efficiency": 10
+  },
+  {
+    "name": {
+      "ar": "GDScript",
+      "en": "GDScript"
+    },
+    "efficiency": 2
+  },
+  {
+    "name": {
+      "ar": "Git",
+      "en": "Git"
+    },
+    "efficiency": 9
+  }
 ]

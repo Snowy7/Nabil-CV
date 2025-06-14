@@ -1,6 +1,30 @@
 [
-  { "name": "Gaming", "icon": "🎮" },
-  { "name": "eSports", "icon": "🏆" },
-  { "name": "Open Source", "icon": "💻" },
-  { "name": "Paper Craft", "icon": "📃" }
+  {
+    "name": {
+      "ar": "اللعب",
+      "en": "Gaming"
+    },
+    "icon": "🎮"
+  },
+  {
+    "name": {
+      "ar": "الرياضات الإلكترونية",
+      "en": "eSports"
+    },
+    "icon": "🏆"
+  },
+  {
+    "name": {
+      "ar": "المصدر المفتوح",
+      "en": "Open Source"
+    },
+    "icon": "💻"
+  },
+  {
+    "name": {
+      "ar": "فن الورق",
+      "en": "Paper Craft"
+    },
+    "icon": "📃"
+  }
 ]

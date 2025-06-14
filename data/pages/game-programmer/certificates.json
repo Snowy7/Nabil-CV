@@ -1,6 +1,9 @@
 [
   {
-    "name": "JavaScript Algorithms and Data Structures",
+    "name": {
+      "ar": "خوارزميات وهياكل بيانات JavaScript",
+      "en": "JavaScript Algorithms and Data Structures"
+    },
     "id": "",
     "image": "/assets/cert/javascript-algorithms-and-data-structures.png",
     "link": "https://freecodecamp.org/certification/Assayyaad/javascript-algorithms-and-data-structures",
@@ -11,7 +14,10 @@
     }
   },
   {
-    "name": "Introduction to C#",
+    "name": {
+      "ar": "مقدمة في C#",
+      "en": "Introduction to C#"
+    },
     "id": "CC-KQMDTAMA",
     "image": "/assets/cert/introduction-to-csharp.png",
     "link": "https://www.sololearn.com/en/certificates/CC-KQMDTAMA",
@@ -22,7 +28,10 @@
     }
   },
   {
-    "name": "Introduction to JavaScript",
+    "name": {
+      "ar": "مقدمة في JavaScript",
+      "en": "Introduction to JavaScript"
+    },
     "id": "CC-7A1QGUWT",
     "image": "/assets/cert/introduction-to-javascript.png",
     "link": "https://www.sololearn.com/en/certificates/CC-7A1QGUWT",
@@ -33,7 +42,10 @@
     }
   },
   {
-    "name": "C++",
+    "name": {
+      "ar": "مقدمة في C++",
+      "en": "Introduction to C++"
+    },
     "id": "CT-DKF29HTQ",
     "image": "/assets/cert/cplusplus.png",
     "link": "https://www.sololearn.com/en/certificates/CT-DKF29HTQ",
@@ -44,7 +56,10 @@
     }
   },
   {
-    "name": "Tech for Everyone",
+    "name": {
+      "ar": "التقنية للجميع",
+      "en": "Tech for Everyone"
+    },
     "id": "CC-49YAACNH",
     "image": "/assets/cert/tech-for-everyone.png",
     "link": "https://api2.sololearn.com/v2/certificates/CC-49YAACNH/image/png",
