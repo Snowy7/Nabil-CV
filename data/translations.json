@@ -1,0 +1,32 @@
+{
+  "en": {
+    "section.personal": "Personal Information",
+    "section.contact": "Contact",
+    "section.social": "Social Accounts",
+    "section.skills": "Skills",
+    "section.tools": "Tools & Technologies",
+    "section.languages": "Languages",
+    "section.interests": "Interests",
+    "section.projects": "Projects",
+    "section.certificates": "Certificates",
+    "footer.opensource": "Website files are",
+    "footer.opensource_link": "Open Source",
+    "footer.licensed": "and licensed under",
+    "footer.license": "The Unlicense"
+  },
+  "ar": {
+    "section.personal": "المعلومات الشخصية",
+    "section.contact": "التواصل",
+    "section.social": "الحسابات الاجتماعية",
+    "section.skills": "المهارات",
+    "section.tools": "الأدوات والتقنيات",
+    "section.languages": "اللغات",
+    "section.interests": "الاهتمامات",
+    "section.projects": "المشاريع",
+    "section.certificates": "الشهادات",
+    "footer.opensource": "ملفات الموقع",
+    "footer.opensource_link": "مفتوحة المصدر",
+    "footer.licensed": "ومرخصة تحت",
+    "footer.license": "الترخيص العام"
+  }
+}

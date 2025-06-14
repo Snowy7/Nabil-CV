@@ -53,6 +53,22 @@
   </head>
 
   <body>
+    <!-- Language Toggle Button -->
+    <button
+      class="language-toggle"
+      id="languageToggle"
+      onclick="window.toggleLanguage()"
+      aria-label="Switch Language"
+    >
+      <span
+        class="iconify-inline icon"
+        data-icon="material-symbols:translate"
+      ></span>
+      <span class="current-lang" id="currentLang">EN</span>
+      <span class="separator">/</span>
+      <span class="alt-lang" id="altLang">عربي</span>
+    </button>
+
     <!-- Header Section -->
     <header>
       <div id="header-content">
@@ -66,7 +82,7 @@
       <aside class="sidebar">
         <!-- Personal Information -->
         <section class="section">
-          <h2>Personal Information</h2>
+          <h2 data-translate="section.personal">Personal Information</h2>
           <dl class="personal-info" id="personal-info-content">
             <div class="loading">Loading personal information...</div>
           </dl>
@@ -74,7 +90,7 @@
 
         <!-- Contact -->
         <section class="section">
-          <h2>Contact</h2>
+          <h2 data-translate="section.contact">Contact</h2>
           <div class="contact-links" id="contact-content">
             <div class="loading">Loading contact information...</div>
           </div>
@@ -82,7 +98,7 @@
 
         <!-- Accounts -->
         <section class="section">
-          <h2>Social Accounts</h2>
+          <h2 data-translate="section.social">Social Accounts</h2>
           <div class="accounts" id="accounts-content">
             <div class="loading">Loading social accounts...</div>
           </div>
@@ -90,7 +106,7 @@
 
         <!-- Skills -->
         <section class="section">
-          <h2>Skills</h2>
+          <h2 data-translate="section.skills">Skills</h2>
           <div class="skills" id="skills-content">
             <div class="loading">Loading skills...</div>
           </div>
@@ -98,7 +114,7 @@
 
         <!-- Tools -->
         <section class="section">
-          <h2>Tools & Technologies</h2>
+          <h2 data-translate="section.tools">Tools & Technologies</h2>
           <div class="tools" id="tools-content">
             <div class="loading">Loading tools...</div>
           </div>
@@ -106,7 +122,7 @@
 
         <!-- Languages -->
         <section class="section">
-          <h2>Languages</h2>
+          <h2 data-translate="section.languages">Languages</h2>
           <div class="languages" id="languages-content">
             <div class="loading">Loading languages...</div>
           </div>
@@ -114,7 +130,7 @@
 
         <!-- Interests -->
         <section class="section">
-          <h2>Interests</h2>
+          <h2 data-translate="section.interests">Interests</h2>
           <div class="interests" id="interests-content">
             <div class="loading">Loading interests...</div>
           </div>
@@ -125,7 +141,7 @@
       <main class="main-content">
         <!-- Projects -->
         <section class="section">
-          <h2>Projects</h2>
+          <h2 data-translate="section.projects">Projects</h2>
           <div id="projects-content">
             <div class="loading">Loading projects...</div>
           </div>
@@ -133,7 +149,7 @@
 
         <!-- Certificates -->
         <section class="section">
-          <h2>Certificates</h2>
+          <h2 data-translate="section.certificates">Certificates</h2>
           <div class="certificates-grid" id="certificates-content">
             <div class="loading">Loading certificates...</div>
           </div>
@@ -145,17 +161,17 @@
     <footer>
       <div id="footer-content">
         <small class="text-grey"
-          >Website files are
+          ><span data-translate="footer.opensource">Website files are</span>
           <a href="https://gitlab.com/Assayyaad/CV" target="_blank"
-            >Open Source</a
+            ><span data-translate="footer.opensource_link">Open Source</span></a
           >
-          and licensed under
+          <span data-translate="footer.licensed">and licensed under</span>
           <a
             href="https://gitlab.com/Assayyaad/CV/blob/main/LICENSE"
             target="_blank"
-            >The Unlicense</a
-          ></small
-        >
+            ><span data-translate="footer.license">The Unlicense</span></a
+          >
+        </small>
       </div>
     </footer>
 

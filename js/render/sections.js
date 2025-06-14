@@ -1,4 +1,4 @@
-/** @import { Account, Certificate, Contact, Header, Interest, Language, PersonalInfo, Project, Skill, Tool } from '../types.js' */
+/** @import { Account, Certificate, Contact, Header, Interest, LangCode, Language, PersonalInfo, Project, Skill, Tool } from '../types.js' */
 
 import containerRenderers from './containers.js'
 import itemRenderers from './items.js'
@@ -19,8 +19,8 @@ const render = {
  */
 export function renderHeader({ title, tagline }) {
   return render.container.empty(
-    render.item.title(title),
-    render.item.tagline(tagline)
+    render.item.title(title[getLang()]),
+    render.item.tagline(tagline[getLang()])
   )
 }
 
@@ -31,9 +31,9 @@ export function renderHeader({ title, tagline }) {
  */
 export function renderPersonalInfo({ name, age, sex }) {
   return render.container.empty(
-    render.item.keyValue('Name', name),
+    render.item.keyValue('Name', name[getLang()]),
     render.item.keyValue('Age', age.toString()),
-    render.item.keyValue('Gender', sex)
+    render.item.keyValue('Gender', sex[getLang()])
   )
 }
 
@@ -85,7 +85,7 @@ export function renderProjects(data) {
    * @returns {string} HTML string for project
    */
   function renderProject({ name, description, link, date }) {
-    const renderedName = render.item.sectionTitle(name, type)
+    const renderedName = render.item.sectionTitle(name[getLang()], type)
 
     const nameContainer = render.container.div(`${type}-header`, [
       render.item.url(link, renderedName, type),
@@ -94,7 +94,7 @@ export function renderProjects(data) {
 
     return render.container.article(type, [
       nameContainer,
-      render.item.description(description, type)
+      render.item.description(description[getLang()], type)
     ])
   }
 }
@@ -115,11 +115,11 @@ export function renderCertificates(data) {
    * @returns {string} HTML string for certificate
    */
   function renderCertificate({ name, id, image, link, provider }) {
-    const renderedImage = render.item.image(image, name, type)
+    const renderedImage = render.item.image(image, name[getLang()], type)
 
     return render.container.div(type, [
       render.item.url(link, renderedImage, type2),
-      render.item.sectionTitle(name, type),
+      render.item.sectionTitle(name[getLang()], type),
       render.item.text(id, `${type}-id`),
       render.item.url(provider.link, provider.name, type2)
     ])
@@ -145,7 +145,7 @@ export function renderSkills(data) {
    */
   function renderSkill({ name, efficiency }) {
     return render.container.div(type, [
-      render.item.name(name, type),
+      render.item.name(name[getLang()], type),
       render.container.dots(efficiency)
     ])
   }
@@ -201,7 +201,7 @@ export function renderInterests(data) {
    * @returns {string} HTML string for interest
    */
   function renderInterest({ name, icon }) {
-    return render.container.div(type, [icon, ' ', name])
+    return render.container.div(type, [icon, ' ', name[getLang()]])
   }
 }
 
@@ -221,10 +221,18 @@ export function renderLanguages(data) {
    */
   function renderLanguage({ name, efficiency }) {
     return render.container.div(type, [
-      render.item.name(name, type),
-      render.item.name(efficiency, type)
+      render.item.name(name[getLang()], type),
+      render.item.name(efficiency[getLang()], type)
     ])
   }
+}
+
+/**
+ * @returns {LangCode} lang - Language object
+ */
+function getLang() {
+  // @ts-expect-error
+  return document.documentElement.lang || 'ar'
 }
 
 export default {

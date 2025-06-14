@@ -8,15 +8,15 @@ export {}
 
 /**
  * @typedef {Object} Header
- * @property {string} title
- * @property {string} tagline
+ * @property {MultiLang<string>} title
+ * @property {MultiLang<string>} tagline
  */
 
 /**
  * @typedef {Object} PersonalInfo
- * @property {string} name
+ * @property {MultiLang<string>} name
  * @property {number} age
- * @property {Sex} sex
+ * @property {MultiLang<Sex>} sex
  */
 
 /**
@@ -34,15 +34,15 @@ export {}
 
 /**
  * @typedef {Object} Project
- * @property {string} name
+ * @property {MultiLang<string>} name
  * @property {string} link
  * @property {DateStr} date - Format: "YYYY-MM"
- * @property {string} description
+ * @property {MultiLang<string>} description
  */
 
 /**
  * @typedef {Object} Certificate
- * @property {string} name
+ * @property {MultiLang<string>} name
  * @property {string} id
  * @property {string} image
  * @property {string} link
@@ -58,7 +58,7 @@ export {}
 
 /**
  * @typedef {Object} Skill
- * @property {string} name
+ * @property {MultiLang<string>} name
  * @property {number} efficiency - Scale 1-10
  */
 
@@ -72,12 +72,30 @@ export {}
 
 /**
  * @typedef {Object} Interest
- * @property {string} name
+ * @property {MultiLang<string>} name
  * @property {string} icon - Emoji or icon class
  */
 
 /**
  * @typedef {Object} Language
- * @property {string} name
- * @property {LanguageEfficiency} efficiency - e.g., "Native", "Fluent", "Intermediate"
+ * @property {MultiLang<string>} name
+ * @property {MultiLang<LanguageEfficiency>} efficiency - e.g., "Native", "Fluent", "Intermediate"
  */
+
+/**
+ * @template {string} Value
+ * @typedef {{ [key: LangCode]: Value }} MultiLang
+ */
+
+// language
+
+/**
+ * @typedef {Object} Lang
+ * @property {LangCode} code - Language code (e.g., 'en', 'ar')
+ * @property {LangName} name - Language name (e.g., 'English', 'العربية')
+ * @property {LangDir} dir - Text direction ('ltr' or 'rtl')
+ */
+
+/** @typedef {'ar' | 'en'} LangCode */
+/** @typedef {'العربية' | 'English'} LangName */
+/** @typedef {'rtl' | 'ltr'} LangDir */
