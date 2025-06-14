@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "accounts.schema.json",
+
+  "title": "Accounts",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the account/platform"
+      },
+      "url": {
+        "type": "string",
+        "format": "uri",
+        "description": "URL to the account"
+      },
+      "icon": {
+        "type": "string",
+        "description": "Icon identifier or class"
+      }
+    },
+    "required": ["name", "url", "icon"],
+    "additionalProperties": false
+  }
+}

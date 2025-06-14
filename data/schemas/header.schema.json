@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "header.schema.json",
+
+  "title": "Header",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The main title"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "The tagline or subtitle"
+    }
+  },
+  "required": ["title", "tagline"],
+  "additionalProperties": false
+}

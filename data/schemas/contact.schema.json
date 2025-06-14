@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "contact.schema.json",
+
+  "title": "Contact",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "pattern": "^[^@]+@[^@]+\\.[^@]+$",
+      "description": "Email address in format: string@string.string"
+    },
+    "phone": {
+      "type": "string",
+      "pattern": "^\\+.+$",
+      "description": "Phone number starting with +"
+    }
+  },
+  "required": ["email", "phone"],
+  "additionalProperties": false
+}

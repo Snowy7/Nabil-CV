@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "personal-info.schema.json",
+
+  "title": "PersonalInfo",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full name of the person"
+    },
+    "age": {
+      "type": "number",
+      "description": "Age in years",
+      "minimum": 0
+    },
+    "sex": {
+      "type": "string",
+      "enum": ["Male", "Female"],
+      "description": "Biological sex"
+    }
+  },
+  "required": ["name", "age", "sex"],
+  "additionalProperties": false
+}

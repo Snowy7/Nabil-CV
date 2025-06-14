@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "skills.schema.json",
+
+  "title": "Skills",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the skill"
+      },
+      "efficiency": {
+        "type": "number",
+        "minimum": 1,
+        "maximum": 10,
+        "description": "Skill efficiency on a scale of 1-10"
+      }
+    },
+    "required": ["name", "efficiency"],
+    "additionalProperties": false
+  }
+}

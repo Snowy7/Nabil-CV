@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "certificates.schema.json",
+
+  "title": "Certificates",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Name of the certificate"
+      },
+      "id": {
+        "type": "string",
+        "description": "Certificate ID"
+      },
+      "image": {
+        "type": "string",
+        "description": "Image URL or path"
+      },
+      "link": {
+        "type": "string",
+        "format": "uri",
+        "description": "Link to the certificate"
+      },
+      "provider": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the provider"
+          },
+          "link": {
+            "type": "string",
+            "format": "uri",
+            "description": "Link to the provider"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon identifier or class"
+          }
+        },
+        "required": ["name", "link", "icon"],
+        "additionalProperties": false,
+        "description": "Certificate provider information"
+      }
+    },
+    "required": ["name", "id", "image", "link", "provider"],
+    "additionalProperties": false
+  }
+}
