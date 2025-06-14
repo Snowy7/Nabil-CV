@@ -87,7 +87,10 @@ export function renderProjects(data) {
   const lang = getLang()
   const type = 'project'
 
-  return data.map(renderProject).join('')
+  return data
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map(renderProject)
+    .join('')
 
   /**
    * @param {Project} project - Project object
@@ -118,7 +121,10 @@ export function renderCertificates(data) {
   const type = 'certificate'
   const type2 = 'provider'
 
-  return data.map(renderCertificate).join('')
+  return data
+    .sort((a, b) => b.provider.name.localeCompare(a.provider.name))
+    .map(renderCertificate)
+    .join('')
 
   /**
    * @param {Certificate} certificate - Certificate object
