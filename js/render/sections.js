@@ -58,14 +58,10 @@ export function renderAccounts(data) {
   return data.map(renderAccount).join('')
 
   function renderAccount({ name, url, icon }) {
-    return render.container.empty(
-      `<a href="${url}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${name} profile">`,
-
+    return render.container.url(url, `Visit ${name} profile`, [
       render.item.icon(icon),
-      name,
-
-      '</a>'
-    )
+      name
+    ])
   }
 }
 
@@ -80,26 +76,17 @@ export function renderProjects(data) {
   return data.map(renderProject).join('')
 
   function renderProject({ name, description, url, date }) {
-    const type = 'project'
     const renderedName = render.item.sectionTitle(name, type)
 
-    const nameContainer = render.container.empty(
-      `<div class="${type}-header">`,
-
+    const nameContainer = render.container.div(`${type}-header`, [
       render.item.url(url, renderedName, type),
-      render.item.date(date, type),
+      render.item.date(date, type)
+    ])
 
-      '</div>'
-    )
-
-    return render.container.empty(
-      `<article class="${type}">`,
-
+    return render.container.article(type, [
       nameContainer,
-      render.item.description(description, type),
-
-      '</article>'
-    )
+      render.item.description(description, type)
+    ])
   }
 }
 
@@ -117,16 +104,12 @@ export function renderCertificates(data) {
   function renderCertificate({ name, id, image, link, provider }) {
     const renderedImage = render.item.image(image, name, type)
 
-    return render.container.empty(
-      '<div class="certificate">',
-
+    return render.container.div(type, [
       render.item.url(link, renderedImage, type2),
       render.item.sectionTitle(name, type),
       render.item.text(id, `${type}-id`),
-      render.item.url(provider.link, provider.name, type2),
-
-      '</div>'
-    )
+      render.item.url(provider.link, provider.name, type2)
+    ])
   }
 }
 
@@ -144,14 +127,10 @@ export function renderSkills(data) {
     .join('')
 
   function renderSkill({ name, efficiency }) {
-    return render.container.empty(
-      `<div class="${type}">`,
-
+    return render.container.div(type, [
       render.item.name(name, type),
-      render.container.dots(efficiency),
-
-      '</div>'
-    )
+      render.container.dots(efficiency)
+    ])
   }
 }
 
@@ -169,31 +148,19 @@ export function renderTools(data) {
     .join('')
 
   function renderTool({ name, icon, link, yearsOfExperience }) {
-    const nameContainer = render.container.empty(
-      `<a href="${link}" target="_blank" rel="noopener noreferrer">`,
-
+    const nameContainer = render.container.url(link, '', [
       render.item.icon(icon),
-      name,
+      name
+    ])
 
-      '</a>'
-    )
+    const toolNameContainer = render.container.div(`${type}-name`, [
+      nameContainer
+    ])
 
-    const toolNameContainer = render.container.empty(
-      `<div class="${type}-name">`,
-
-      nameContainer,
-
-      '</div>'
-    )
-
-    return render.container.empty(
-      `<div class="${type}">`,
-
+    return render.container.div(type, [
       toolNameContainer,
-      render.item.experience(yearsOfExperience, type),
-
-      '</div>'
-    )
+      render.item.experience(yearsOfExperience, type)
+    ])
   }
 }
 
@@ -208,13 +175,7 @@ export function renderInterests(data) {
   return data.map(renderInterest).join('')
 
   function renderInterest({ name, icon }) {
-    return render.container.empty(
-      `<span class="${type}">`,
-
-      `${icon} ${name}`,
-
-      '</span>'
-    )
+    return render.container.div(type, [`${icon} ${name}`])
   }
 }
 
@@ -229,14 +190,10 @@ export function renderLanguages(data) {
   return data.map(renderLanguage).join('')
 
   function renderLanguage({ name, efficiency }) {
-    return render.container.empty(
-      `<div class="${type}">`,
-
+    return render.container.div(type, [
       render.item.name(name, type),
-      render.item.name(efficiency, type),
-
-      '</div>'
-    )
+      render.item.name(efficiency, type)
+    ])
   }
 }
 
