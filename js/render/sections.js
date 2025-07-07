@@ -1,4 +1,29 @@
-/** @import { Account, Certificate, Contact, Header, Interest, LangCode, Language, PersonalInfo, Project, Skill, Tool } from '../types.js' */
+/** @import { Account, Certificate, Contact, Header, Interest, LangCode, Language, PersonalInfo, Project, Skill, T    return `
+      <div class="project" onclick="openProjectModal(${projectData})">
+        ${
+          banner
+            ? `<img src="${banner}" alt="${name[lang]}" class="project-banner" loading="lazy" />`
+            : `<div class="project-banner-placeholder">
+                <span class="iconify" data-icon="material-symbols:image"></span>
+               </div>`
+        }
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-title">${name[lang]}</h3>
+            <div class="project-actions">
+              ${
+                link
+                  ? `<a href="${link}" target="_blank" class="project-link-btn" onclick="event.stopPropagation()" aria-label="Open project in new tab">
+                      <span class="iconify" data-icon="material-symbols:open-in-new"></span>
+                     </a>`
+                  : ''
+              }
+            </div>
+          </div>
+          <span class="project-date">${formattedDate}</span>
+          <p class="project-description">${description[lang]}</p>
+        </div>
+      </div>`pes.js' */
 
 import containerRenderers from './containers.js'
 import itemRenderers from './items.js'
@@ -85,7 +110,6 @@ export function renderAccounts(data) {
  */
 export function renderProjects(data) {
   const lang = getLang()
-  const type = 'project'
 
   return data
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -96,18 +120,49 @@ export function renderProjects(data) {
    * @param {Project} project - Project object
    * @returns {string} HTML string for project
    */
-  function renderProject({ name, description, link, date }) {
-    const renderedName = render.item.sectionTitle(name[lang], type)
+  function renderProject({ name, description, link, date, banner }) {
+    const formattedDate = new Date(date).toLocaleDateString(
+      lang === 'ar' ? 'ar-SA' : 'en-US',
+      {
+        year: 'numeric',
+        month: 'short'
+      }
+    )
 
-    const nameContainer = render.container.div(`${type}-header`, [
-      render.item.url(link, renderedName, type),
-      render.item.date(date, type)
-    ])
+    const projectData = JSON.stringify({
+      name,
+      description,
+      link,
+      date,
+      banner
+    }).replace(/"/g, '&quot;')
 
-    return render.container.article(type, [
-      nameContainer,
-      render.item.description(description[lang], type)
-    ])
+    return `
+      <div class="project" onclick="openProjectModal(${projectData})">
+        ${
+          banner
+            ? `<img src="${banner}" alt="${name[lang]}" class="project-banner" loading="lazy" />`
+            : `<div class="project-banner-placeholder">
+                <span class="iconify" data-icon="material-symbols:image"></span>
+               </div>`
+        }
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-title">${name[lang]}</h3>
+            <div class="project-actions">
+              ${
+                link
+                  ? `<a href="${link}" target="_blank" class="project-link-btn" onclick="event.stopPropagation()" aria-label="Open project in new tab">
+                      <span class="iconify" data-icon="material-symbols:open-in-new"></span>
+                     </a>`
+                  : ''
+              }
+            </div>
+          </div>
+          <span class="project-date">${formattedDate}</span>
+          <p class="project-description">${description[lang]}</p>
+        </div>
+      </div>`
   }
 }
 
@@ -119,7 +174,6 @@ export function renderProjects(data) {
 export function renderCertificates(data) {
   const lang = getLang()
   const type = 'certificate'
-  const type2 = 'provider'
 
   return data
     .sort((a, b) => b.provider.name.localeCompare(a.provider.name))
@@ -131,14 +185,36 @@ export function renderCertificates(data) {
    * @returns {string} HTML string for certificate
    */
   function renderCertificate({ name, id, image, link, provider }) {
-    const renderedImage = render.item.image(image, name[lang], type)
+    const certData = JSON.stringify({
+      name,
+      id,
+      image,
+      link,
+      provider
+    }).replace(/"/g, '&quot;')
 
-    return render.container.div(type, [
-      render.item.url(link, renderedImage, type2),
-      render.item.sectionTitle(name[lang], type),
-      render.item.text(id, `${type}-id`),
-      render.item.url(provider.link, provider.name, type2)
-    ])
+    return `
+      <div class="${type}" onclick="openCertificateModal(${certData})">
+              <div class="${type}-overlay">
+          <span class="iconify" data-icon="material-symbols:visibility"></span>
+          <span>View Certificate</span>
+        </div>
+        <img src="${image}" alt="${name[lang]}" class="${type}-image" />
+        <div class="${type}-info">
+          <div class="certificate-header">
+            <h4 class="${type}-title">${name[lang]}</h4>
+            ${
+              link
+                ? `<a href="${link}" target="_blank" class="cert-external-link-btn" onclick="event.stopPropagation()" aria-label="Open certificate in new tab">
+                    <span class="iconify" data-icon="material-symbols:open-in-new"></span>
+                   </a>`
+                : ''
+            }
+          </div>
+          <p class="${type}-provider">${provider.name}</p>
+        </div>
+      </div>
+    `
   }
 }
 
@@ -149,22 +225,30 @@ export function renderCertificates(data) {
  */
 export function renderSkills(data) {
   const lang = getLang()
-  const type = 'skill'
 
   return data
     .sort((a, b) => b.efficiency - a.efficiency)
     .map(renderSkill)
     .join('')
-
   /**
    * @param {Skill} skill - Skill object
    * @returns {string} HTML string for skill
    */
   function renderSkill({ name, efficiency }) {
-    return render.container.div(type, [
-      render.item.name(name[lang], type),
-      render.container.dots(efficiency)
-    ])
+    // Normalize efficiency to 5-point scale (assuming input is 0-10)
+    const normalizedEfficiency = Math.min(
+      5,
+      Math.max(0, Math.round(efficiency / 2))
+    )
+    const proficiencyDots =
+      '●'.repeat(normalizedEfficiency) + '○'.repeat(5 - normalizedEfficiency)
+
+    return `
+      <div class="skill-tag" title="Proficiency: ${efficiency}/10">
+        <span>${name[lang]}</span>
+        <span class="skill-proficiency">${proficiencyDots}</span>
+      </div>
+    `
   }
 }
 
@@ -175,7 +259,6 @@ export function renderSkills(data) {
  */
 export function renderTools(data) {
   const lang = getLang()
-  const type = 'tool'
 
   return data
     .sort((a, b) => b.yearsOfExperience - a.yearsOfExperience)
@@ -187,20 +270,21 @@ export function renderTools(data) {
    * @returns {string} HTML string for tool
    */
   function renderTool({ name, icon, link, yearsOfExperience }) {
-    const nameContainer = render.container.url(link, '', [
-      render.item.icon(icon),
-      ' ',
-      name
-    ])
+    const iconHtml = icon
+      ? `<span class="iconify" data-icon="${icon}"></span>`
+      : ''
+    const experienceText =
+      yearsOfExperience > 1
+        ? `${yearsOfExperience} years`
+        : `${yearsOfExperience} year`
 
-    const toolNameContainer = render.container.div(`${type}-name`, [
-      nameContainer
-    ])
-
-    return render.container.div(type, [
-      toolNameContainer,
-      render.item.experience(yearsOfExperience, type)
-    ])
+    return `
+      <div class="tool-tag" title="${experienceText} of experience">
+        ${iconHtml}
+        <span>${name}</span>
+        <span class="tool-experience">${experienceText}</span>
+      </div>
+    `
   }
 }
 
@@ -211,7 +295,6 @@ export function renderTools(data) {
  */
 export function renderInterests(data) {
   const lang = getLang()
-  const type = 'interest'
 
   return data.map(renderInterest).join('')
 
@@ -220,7 +303,16 @@ export function renderInterests(data) {
    * @returns {string} HTML string for interest
    */
   function renderInterest({ name, icon }) {
-    return render.container.div(type, [icon, ' ', name[lang]])
+    const iconHtml = icon
+      ? `<span class="iconify" data-icon="${icon}"></span>`
+      : ''
+
+    return `
+      <div class="interest-tag">
+        ${iconHtml}
+        <span>${name[lang]}</span>
+      </div>
+    `
   }
 }
 
@@ -231,7 +323,6 @@ export function renderInterests(data) {
  */
 export function renderLanguages(data) {
   const lang = getLang()
-  const type = 'language'
 
   return data.map(renderLanguage).join('')
 
@@ -240,10 +331,12 @@ export function renderLanguages(data) {
    * @returns {string} HTML string for language
    */
   function renderLanguage({ name, efficiency }) {
-    return render.container.div(type, [
-      render.item.name(name[lang], type),
-      render.item.name(efficiency[lang], type)
-    ])
+    return `
+      <div class="language-item">
+        <span class="language-name">${name[lang]}</span>
+        <span class="language-level">${efficiency[lang]}</span>
+      </div>
+    `
   }
 }
 

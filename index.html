@@ -28,6 +28,15 @@
     <meta name="twitter:image" content="assets/logo.png" />
 
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon" />
+
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
 
     <title>Assayyaad CV - Game Developer</title>
@@ -69,111 +78,203 @@
       <span class="alt-lang" id="altLang">عربي</span>
     </button>
 
-    <!-- Header Section -->
-    <header>
-      <div id="header-content">
-        <div class="loading">Loading header...</div>
+    <!-- Fixed Vertical Sidebar -->
+    <aside class="sidebar-fixed" id="sidebar-fixed">
+      <div class="sidebar-line"></div>
+      <div class="sidebar-items">
+        <!-- Contact and social items will be dynamically loaded -->
       </div>
-    </header>
+    </aside>
 
-    <!-- Main Container -->
-    <div class="container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <!-- Personal Information -->
-        <section class="section">
-          <h2 data-translate="section.personal">Personal Information</h2>
-          <dl class="personal-info" id="personal-info-content">
-            <div class="loading">Loading personal information...</div>
-          </dl>
-        </section>
+    <div class="main-container">
+      <!-- Header Section -->
+      <header class="fade-in">
+        <div id="header-content">
+          <div class="loading">Loading header...</div>
+        </div>
+      </header>
 
-        <!-- Contact -->
-        <section class="section">
-          <h2 data-translate="section.contact">Contact</h2>
-          <div class="contact-links" id="contact-content">
-            <div class="loading">Loading contact information...</div>
+      <!-- Main Container -->
+      <div class="container">
+        <!-- About Me Section -->
+        <section class="section slide-in-up" id="about">
+          <h2 data-translate="section.about">About Me</h2>
+          <div class="section-content">
+            <div class="about-grid">
+              <div class="personal-info-container">
+                <h3 data-translate="section.personal">Personal Information</h3>
+                <dl class="personal-info" id="personal-info-content">
+                  <div class="loading">Loading personal information...</div>
+                </dl>
+              </div>
+              <div class="languages-interests-container">
+                <div class="languages-section">
+                  <h3 data-translate="section.languages">Languages</h3>
+                  <div class="languages-grid" id="languages-content">
+                    <div class="loading">Loading languages...</div>
+                  </div>
+                </div>
+                <div class="interests-section">
+                  <h3 data-translate="section.interests">Interests</h3>
+                  <div class="interests-grid" id="interests-content">
+                    <div class="loading">Loading interests...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- Accounts -->
-        <section class="section">
-          <h2 data-translate="section.social">Social Accounts</h2>
-          <div class="accounts" id="accounts-content">
-            <div class="loading">Loading social accounts...</div>
+        <!-- Skills Section -->
+        <section class="section slide-in-up" id="skills">
+          <h2 data-translate="section.skills_tools">Skills & Technologies</h2>
+          <div class="section-content">
+            <div class="skills-container">
+              <div class="skills-section">
+                <h3 data-translate="section.skills">Skills</h3>
+                <div class="skills-tags" id="skills-content">
+                  <div class="loading">Loading skills...</div>
+                </div>
+              </div>
+              <div class="tools-section">
+                <h3 data-translate="section.tools">Tools & Technologies</h3>
+                <div class="tools-tags" id="tools-content">
+                  <div class="loading">Loading tools...</div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <!-- Skills -->
-        <section class="section">
-          <h2 data-translate="section.skills">Skills</h2>
-          <div class="skills" id="skills-content">
-            <div class="loading">Loading skills...</div>
-          </div>
-        </section>
-
-        <!-- Tools -->
-        <section class="section">
-          <h2 data-translate="section.tools">Tools & Technologies</h2>
-          <div class="tools" id="tools-content">
-            <div class="loading">Loading tools...</div>
-          </div>
-        </section>
-
-        <!-- Languages -->
-        <section class="section">
-          <h2 data-translate="section.languages">Languages</h2>
-          <div class="languages" id="languages-content">
-            <div class="loading">Loading languages...</div>
-          </div>
-        </section>
-
-        <!-- Interests -->
-        <section class="section">
-          <h2 data-translate="section.interests">Interests</h2>
-          <div class="interests" id="interests-content">
-            <div class="loading">Loading interests...</div>
-          </div>
-        </section>
-      </aside>
-
-      <!-- Main Content -->
-      <main class="main-content">
-        <!-- Projects -->
-        <section class="section">
+        <!-- Projects Section -->
+        <section class="section slide-in-up" id="projects">
           <h2 data-translate="section.projects">Projects</h2>
-          <div id="projects-content">
-            <div class="loading">Loading projects...</div>
+          <div class="section-content">
+            <div class="projects-grid" id="projects-content">
+              <div class="loading">Loading projects...</div>
+            </div>
           </div>
         </section>
 
-        <!-- Certificates -->
-        <section class="section">
+        <!-- Certificates Section -->
+        <section class="section slide-in-up" id="certificates">
           <h2 data-translate="section.certificates">Certificates</h2>
-          <div class="certificates-grid" id="certificates-content">
-            <div class="loading">Loading certificates...</div>
+          <div class="section-content">
+            <div class="certificates-grid" id="certificates-content">
+              <div class="loading">Loading certificates...</div>
+            </div>
           </div>
         </section>
-      </main>
+      </div>
+
+      <!-- Enhanced Footer -->
+      <footer>
+        <div class="footer-content">
+          <nav class="footer-nav">
+            <a href="#about" data-translate="nav.about">About</a>
+            <a href="#skills" data-translate="nav.skills">Skills</a>
+            <a href="#projects" data-translate="nav.projects">Projects</a>
+            <a href="#certificates" data-translate="nav.certificates"
+              >Certificates</a
+            >
+          </nav>
+          <div class="footer-social">
+            <!-- Social links will be dynamically populated -->
+          </div>
+          <div class="footer-info">
+            <small class="text-grey">
+              <span data-translate="footer.opensource">Website files are</span>
+              <a href="https://github.com/Assayyaad/CV" target="_blank">
+                <span data-translate="footer.opensource_link">Open Source</span>
+              </a>
+              <span data-translate="footer.licensed">and licensed under</span>
+              <a
+                href="https://github.com/Assayyaad/CV/blob/main/LICENSE"
+                target="_blank"
+              >
+                <span data-translate="footer.license">The Unlicense</span>
+              </a>
+            </small>
+          </div>
+        </div>
+      </footer>
     </div>
 
-    <!-- Footer Section -->
-    <footer>
-      <div id="footer-content">
-        <small class="text-grey"
-          ><span data-translate="footer.opensource">Website files are</span>
-          <a href="https://github.com/Assayyaad/CV" target="_blank"
-            ><span data-translate="footer.opensource_link">Open Source</span></a
-          >
-          <span data-translate="footer.licensed">and licensed under</span>
-          <a
-            href="https://github.com/Assayyaad/CV/blob/main/LICENSE"
-            target="_blank"
-            ><span data-translate="footer.license">The Unlicense</span></a
-          >
-        </small>
+    <!-- Certificate Modal -->
+    <div class="modal" id="certificate-modal">
+      <div class="modal-backdrop" onclick="closeCertificateModal()"></div>
+      <div class="modal-content">
+        <button
+          class="modal-close"
+          onclick="closeCertificateModal()"
+          aria-label="Close"
+        >
+          <span class="iconify" data-icon="material-symbols:close"></span>
+        </button>
+        <div class="modal-body">
+          <img id="modal-cert-image" src="" alt="Certificate" />
+          <div class="modal-cert-info">
+            <h3 id="modal-cert-title"></h3>
+            <p id="modal-cert-description"></p>
+            <a
+              id="modal-cert-link"
+              href=""
+              target="_blank"
+              class="cert-link-btn"
+            >
+              <span
+                class="iconify"
+                data-icon="material-symbols:open-in-new"
+              ></span>
+              <span data-translate="certificates.view">View Certificate</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </footer>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+      <div class="modal-backdrop" onclick="closeProjectModal()"></div>
+      <div class="project-modal-content">
+        <div class="project-modal-header">
+          <h3 class="project-modal-title" id="project-modal-title"></h3>
+          <button
+            class="modal-close"
+            onclick="closeProjectModal()"
+            aria-label="Close"
+          >
+            <span class="iconify" data-icon="material-symbols:close"></span>
+          </button>
+        </div>
+        <div
+          class="project-modal-error"
+          id="project-modal-error"
+          style="display: none"
+        >
+          <span
+            class="iconify"
+            data-icon="material-symbols:error-outline"
+          ></span>
+          <h4>Unable to load project preview</h4>
+          <p>
+            This project might not support embedding or requires direct access.
+          </p>
+          <a
+            id="project-modal-direct-link"
+            href=""
+            target="_blank"
+            class="cert-link-btn"
+          >
+            <span
+              class="iconify"
+              data-icon="material-symbols:open-in-new"
+            ></span>
+            <span>Open Project</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <script src="js/index.js" type="module"></script>
     <script src="js/lang.js" type="module"></script>
